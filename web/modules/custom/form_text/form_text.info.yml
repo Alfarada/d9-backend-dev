@@ -1,0 +1,5 @@
+name: Form Text Element
+description: From Text Examples
+package: Form Examples
+type: module
+core_version_requirement: ^9

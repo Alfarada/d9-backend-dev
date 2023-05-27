@@ -1,0 +1,31 @@
+ja_theming.example:
+  path: '/admin/ja-theming/controller'
+  defaults:
+    _controller: '\Drupal\ja_theming\Controller\JaThemingController::render'
+    _title: 'Example Ja Theming Controller'
+  requirements:
+    _permission: 'access content'
+
+ja_theming.test:
+  path: '/admin/ja-theming/test'
+  defaults:
+    _controller: '\Drupal\ja_theming\Controller\TestClass::getDescription'
+    _title: 'Test Service Render'
+  requirements:
+    _permission: 'access content'
+
+ja_theming.template.test:
+  path: '/ja-theming/template-test'
+  defaults:
+    _title: 'Template Test'
+    _controller: '\Drupal\ja_theming\Controller\TemplateTest::build'
+  requirements:
+    _permission: 'access content'
+
+ja_theming.content:
+  path: '/ja-theming/template-content'
+  defaults:
+    _title: 'Hook menu test'
+    _controller: '\Drupal\ja_theming\Controller\TemplateTest::content'
+  requirements:
+    _permission: 'access content'

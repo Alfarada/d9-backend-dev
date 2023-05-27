@@ -1,0 +1,17 @@
+{#
+/**
+ * Any coment here ...
+ */
+#}
+
+{# alternativa para agregar libreria de estilos css  #}
+{{ attach_library('ja_theming/ja_theming_styles.css') }}
+
+<span class="item-dimensions">
+  {% trans %}
+    Dimensions (length x width x height) : {{ length }} x {{ width  }} x {{ height }} {{ unit }}
+  {% endtrans %}
+</span>
+
+<p>{{ loripsum(300) }}</p>
+<p>{{ loripsum(100)|space_replace }}</p>

@@ -1,0 +1,7 @@
+schema_example.schema_form:
+  path: '/schema-example/form'
+  defaults:
+    _title: 'Create Table'
+    _form: 'Drupal\schema_example\Form\SchemaExampleForm'
+  requirements:
+    _permission: 'access content'

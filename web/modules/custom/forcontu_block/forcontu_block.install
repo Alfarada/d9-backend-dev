@@ -1,0 +1,29 @@
+<?php
+
+function forcontu_block_schema() {
+  $schema['forcontu_node_votes'] = [
+    'description' => 'Store Node Votes',
+    'fields' => [
+      'nid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Node ID'
+      ],
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'User ID'
+      ],
+      'vote' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => '1 to 5'
+      ]
+    ],
+    'primary key' => ['nid', 'uid'],
+  ];
+
+  return $schema;
+}

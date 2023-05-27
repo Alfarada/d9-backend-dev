@@ -1,0 +1,65 @@
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+
+entity.content_advertiser_entity.canonical:
+  path: "/content_advertiser_entity/{content_advertiser_entity}"
+  defaults:
+    # Calls the view controller, defined in the annotation of the contact
+    # entity. This marks this route as belonging to this entity type.
+    _entity_view: "content_advertiser_entity"
+    _title: "Advertiser content"
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix ('view')
+    # as the $operation parameter to checkAccess().
+    _entity_access: "content_advertiser_entity.view"
+
+advertiser_entity.advertiser_add:
+  path: "/content_advertiser_entity/add"
+  defaults:
+    # Calls the form.add controller, defined in the contact entity.
+    _entity_form: content_advertiser_entity.default
+    _title: "Add advertiser"
+  requirements:
+    # Use the entity's access controller. _entity_create_access tells the router
+    # to use the access controller's checkCreateAccess() method instead of
+    # checkAccess().
+    _entity_create_access: "content_advertiser_entity"
+
+entity.content_advertiser_entity.edit_form:
+  path: "/content_advertiser_entity/{content_advertiser_entity}/edit"
+  defaults:
+    # Calls the form.edit controller, defined in the contact entity.
+    _entity_form: content_advertiser_entity.default
+    _title: "Edit advertiser"
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix
+    # ('update') as the $operation parameter to checkAccess().
+    _entity_access: "content_advertiser_entity.update"
+
+entity.content_advertiser_entity.delete_form:
+  path: "/advertiser/{content_advertiser_entity}/delete"
+  defaults:
+    # Calls the form.delete controller, defined in the contact entity.
+    _entity_form: content_advertiser_entity.delete
+    _title: "Delete advertiser"
+  requirements:
+    # Calls the access controller of the entity, passing in the suffix
+    # ('delete') as the $operation parameter to checkAccess().
+    _entity_access: "content_advertiser_entity.delete"
+
+entity.content_advertiser_entity.collection:
+  path: "/content_advertiser_entity/list"
+  defaults:
+    _entity_list: "content_advertiser_entity"
+    _title: "Advertiser list"
+  requirements:
+    _permission: "view advertiser entity"
+
+# path for settings
+advertiser_entity.advertiser_settings:
+  path: "/admin/structure/content_advertiser_entity_settings"
+  defaults:
+    _form: '\Drupal\advertiser_entity\Form\AdvertiserSettingsForm'
+    _title: "Advertiser Settings"
+  requirements:
+    _permission: "administer advertiser entity"

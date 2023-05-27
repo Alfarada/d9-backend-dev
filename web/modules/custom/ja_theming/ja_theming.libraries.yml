@@ -1,0 +1,11 @@
+ja_theming_styles.css:
+  version: 1.0
+  css:
+    theme:
+      css/ja_theming.css: { }
+
+ja_theming.layouts:
+  version: 1.0
+  css:
+    theme:
+      css/ja_theming_layouts.css: {}

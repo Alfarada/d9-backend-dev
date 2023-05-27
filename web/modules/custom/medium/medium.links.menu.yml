@@ -1,0 +1,11 @@
+medium_entity_collection_menu:
+  title: 'Medium entity list'
+  route_name: entity.medium.collection
+  description: 'List of Medium entities'
+  parent: system.admin_content
+
+medium_type_entity_collection_menu:
+  title: 'Medium Entity Types'
+  route_name: entity.medium_type.collection
+  description: 'List of Medium entity types (bundles)'
+  parent: system.admin_structure

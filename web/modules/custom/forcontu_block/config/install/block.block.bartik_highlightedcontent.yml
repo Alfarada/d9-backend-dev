@@ -1,0 +1,21 @@
+langcode: es
+status: true
+dependencies:
+  module:
+    - forcontu_block
+  theme:
+    - bartik
+id: highlightedcontent
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: forcontu_block_highlighted_content_block
+settings:
+  id: forcontu_block_highlighted_content_block
+  label: 'Highlighted Content'
+  provider: forcontu_block
+  label_display: visible
+  block_message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ornare egestas. Nam pellentesque lacus ac justo fermentum commodo.'
+  node_number: '2'
+visibility: { }

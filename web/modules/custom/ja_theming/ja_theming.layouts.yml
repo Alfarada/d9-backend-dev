@@ -1,0 +1,13 @@
+ja_theming_layout_two_column:
+  label: 'Ja Theming Layout Two Column'
+  category: 'Ja Theming Layouts'
+  template: templates/ja-theming-two-column
+  library: ja_theming/layouts
+  default_region: first
+  icon_map:
+    - [first, second]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second

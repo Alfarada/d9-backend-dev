@@ -1,0 +1,15 @@
+meidium_entity_task_view:
+  route_name: entity.meidium.canonical
+  base_route: entity.meidium.canonical
+  title: 'View'
+
+meidium_entity_task_edit:
+  route_name: entity.meidium.edit_form
+  base_route: entity.meidium.canonical
+  title: 'Edit'
+
+meidium_entity_task_delete:
+  route_name:  entity.meidium.delete_form
+  base_route:  entity.meidium.canonical
+  title: Delete
+  weight: 10

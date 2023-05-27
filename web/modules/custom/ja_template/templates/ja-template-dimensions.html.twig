@@ -1,0 +1,19 @@
+{#
+/**
+* @file
+* Default theme implementation for 'ja_template_dimensions'.
+*
+* Available variables:
+* - length.
+* - width.
+* - height
+* - unit (dafault to cm.)
+*/
+#}
+
+{{ attach_library('ja_template/ja_template.library') }}
+<span class="item-dimensions">
+{% trans %}
+  Dimensions (length x width x height): {{ length }} x {{ width }} x {{ height }} {{ unit }}
+{% endtrans %}
+</span>

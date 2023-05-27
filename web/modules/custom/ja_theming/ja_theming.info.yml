@@ -1,0 +1,5 @@
+name: Ja Theming
+description: Ja Theming Examples
+package: Form Examples
+type: module
+core_version_requirement: ^9

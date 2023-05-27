@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function ja_template_theme($existing, $type, $theme, $path) {
+  return [
+    'ja_template_dimensions' => [
+      'variables' => [
+        'length' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+        'unit' => 'cm.',
+      ],
+      'template' => 'ja-template-dimensions',
+    ],
+  ];
+}
+

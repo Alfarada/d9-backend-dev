@@ -1,0 +1,5 @@
+ja_jquery.js:
+  js:
+    js/ja_jquery_fadeout.js: { }
+  dependencies:
+    - core/jquery

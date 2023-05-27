@@ -1,0 +1,23 @@
+form_groups_element.example:
+  path: '/admin/form-groups-element/forms/example'
+  defaults:
+    _form: '\Drupal\form_groups_element\Form\ElementForm'
+    _title: 'Example Groups Element Form'
+  requirements:
+    _permission: 'access content'
+
+form_groups_container.example:
+  path: '/admin/form-groups-container/forms/example'
+  defaults:
+    _form: '\Drupal\form_groups_element\Form\ContainerForm'
+    _title: 'Example Groups Container Form'
+  requirements:
+    _permission: 'access content'
+
+form_groups_table.example:
+  path: '/admin/form-groups-table/forms/example'
+  defaults:
+    _form: '\Drupal\form_groups_element\Form\TableForm'
+    _title: 'Example Groups Table Form'
+  requirements:
+    _permission: 'access content'

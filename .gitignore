@@ -1,2 +1,4 @@
 vendor/
 .idea/
+web/sites/default/settings.php
+web/sites/default/files

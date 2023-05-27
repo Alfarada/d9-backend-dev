@@ -1,0 +1,5 @@
+services:
+  ja_theming.twig.extension:
+    class: Drupal\ja_theming\TwigExtension\ThemingTwigExtension
+    tags:
+      - { name: twig.extension }

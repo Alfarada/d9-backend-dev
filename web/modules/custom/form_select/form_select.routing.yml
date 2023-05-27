@@ -1,0 +1,7 @@
+form_select.example:
+  path: '/admin/form-select-element/forms/example'
+  defaults:
+    _form: '\Drupal\form_select\Form\SelectField'
+    _title: 'Example Select Element Form'
+  requirements:
+    _permission: 'access content'

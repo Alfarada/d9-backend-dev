@@ -1,0 +1,3 @@
+administer medium types:
+  title: 'Administer Medium Entity types'
+  restrict access: true

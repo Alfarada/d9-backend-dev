@@ -1,0 +1,12 @@
+# Define the menu links for this module
+
+entity.content_advertiser_entity.collection:
+  title: 'Content Entity Example'
+  route_name: entity.content_advertiser_entity.collection
+  description: 'List advertisers'
+
+content_advertiser_entity.admin.structure.settings:
+  title: "Advertiser settings"
+  description: "Configure advertiser entity"
+  route_name: advertiser_entity.advertiser_settings
+  parent: system.admin_structure

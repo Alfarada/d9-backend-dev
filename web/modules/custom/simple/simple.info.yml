@@ -1,0 +1,5 @@
+name: Simple Module
+type: module
+package: custom
+description: Creating a simple content entity with bundles
+core_version_requirement: ^9

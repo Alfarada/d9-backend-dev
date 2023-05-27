@@ -1,0 +1,7 @@
+ja_template.library:
+  version: 1.x
+  css:
+    theme:
+      css/ja_theming.css: { }
+  js:
+    js/ja_template.js: { }

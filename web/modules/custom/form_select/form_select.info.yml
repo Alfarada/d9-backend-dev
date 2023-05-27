@@ -1,0 +1,5 @@
+name: Form Select Element
+description: From Select Examples
+package: Form Examples
+type: module
+core_version_requirement: ^9

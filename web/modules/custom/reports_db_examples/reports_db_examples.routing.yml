@@ -1,0 +1,16 @@
+reports.employees:
+  path: '/admin/reports/employees'
+  defaults:
+    _title: 'Employees'
+    _controller: '\Drupal\reports_db_examples\Controller\Employees::build'
+  requirements:
+    _permission: 'access content'
+
+reports.employee_details:
+  path: '/admin/reports/employee-details/{id}'
+  defaults:
+    _title: 'Employees Details'
+    _controller: '\Drupal\reports_db_examples\Controller\EmployeeDetails::show'
+#    id: 1
+  requirements:
+    _permission: 'access content'

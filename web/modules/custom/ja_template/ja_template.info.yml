@@ -1,0 +1,5 @@
+name: Ja template example
+description: Ja theming in custom modules Examples
+package: Theming example
+type: module
+core_version_requirement: ^9

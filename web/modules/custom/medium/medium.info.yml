@@ -1,0 +1,5 @@
+name: Medium Module
+type: module
+package: custom
+description: Creating a medium content entity with bundles
+core_version_requirement: ^9

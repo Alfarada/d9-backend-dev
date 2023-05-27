@@ -1,0 +1,5 @@
+name: Form Groups Element
+description: From Groups Examples
+package: Form Examples
+type: module
+core_version_requirement: ^9

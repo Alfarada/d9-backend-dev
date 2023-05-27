@@ -1,0 +1,7 @@
+form_buttons.example:
+  path: '/admin/form-buttons/forms/example'
+  defaults:
+    _form: '\Drupal\form_buttons\Form\ButtonElement'
+    _title: 'Example Button Element Form'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,8 @@
+forcontu_users.example:
+  path: '/admin/forcontu-users/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\forcontu_users\Controller\ForcontuUsersController::build'
+  requirements:
+    _permission: 'access content'
+

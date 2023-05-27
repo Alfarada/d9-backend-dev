@@ -1,0 +1,5 @@
+name: Schema Example
+type: module
+description: Examples of how to create a database schema
+package: Alfredo
+core_version_requirement: ^9 || ^10

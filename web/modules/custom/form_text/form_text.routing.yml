@@ -1,0 +1,7 @@
+form_text.example:
+  path: '/admin/form-text-element/forms/example'
+  defaults:
+    _form: '\Drupal\form_text\Form\TextField'
+    _title: 'Example Text Element Form'
+  requirements:
+    _permission: 'access content'

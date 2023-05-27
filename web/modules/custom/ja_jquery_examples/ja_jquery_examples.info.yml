@@ -1,0 +1,5 @@
+name: Ja JQuery Examples ..
+description: JQuery aplications examples
+package: JQuery examples
+type: module
+core_version_requirement: ^9

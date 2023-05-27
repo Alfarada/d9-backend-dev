@@ -1,0 +1,7 @@
+ja_template.example:
+  path: '/admin/ja-template/controller'
+  defaults:
+    _controller: '\Drupal\ja_template\Controller\Template::render'
+    _title: 'Example Ja Template Controller'
+  requirements:
+    _permission: 'access content'
