@@ -1,0 +1,7 @@
+ja_plugins.fipsum:
+  path: '/ja-plugins/plugins/fipsum'
+  defaults:
+    _controller: '\Drupal\ja_plugins\Controller\PluginsController::fipsum'
+    _title: 'Fipsum Test Page'
+  requirements:
+    _permission: 'access content'
