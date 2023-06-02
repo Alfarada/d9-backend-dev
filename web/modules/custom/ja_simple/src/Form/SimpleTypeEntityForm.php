@@ -1,9 +1,10 @@
 <?php
 
-namespace Drupal\simple\Form;
+namespace Drupal\ja_simple\Form;
 
 use Drupal\Core\Entity\BundleEntityFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\field_ui\FieldUI;
 
 class SimpleTypeEntityForm extends BundleEntityFormBase {
 
@@ -29,12 +30,27 @@ class SimpleTypeEntityForm extends BundleEntityFormBase {
       '#type' => 'machine_name',
       '#default_value' => $entity_type->id(),
       '#machine_name' => [
-        'exists' => '\Drupal\mostSimple\Entity\MostSimpleTypeEntity::load',
+        'exists' => '\Drupal\ja_simple\Entity\SimpleTypeEntity::load',
       ],
       '#disabled' => !$entity_type->isNew(),
     ];
 
     return $this->protectBundleIdElement($form);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function actions(array $form, FormStateInterface $form_state) {
+    $actions = parent::actions($form, $form_state);
+
+    if (\Drupal::moduleHandler()->moduleExists('field_ui') && $this->getEntity()->isNew()) {
+      $actions['save_continue'] = $actions['submit'];
+      $actions['save_continue']['#value'] = $this->t('Save and manage fields');
+      $actions['save_continue']['#submit'][] = [$this, 'redirectToFieldUi'];
+    }
+
+    return $actions;
   }
 
   /**
@@ -58,5 +74,19 @@ class SimpleTypeEntityForm extends BundleEntityFormBase {
     }
 
     $form_state->setRedirectUrl($entity_type->toUrl('collection'));
+  }
+
+  /**
+   * Form submission handler to redirect to Manage fields page of Field UI.
+   *
+   * @param array $form
+   * @param FormStateInterface $form_state
+   */
+  public function redirectToFieldUi(array $form, FormStateInterface $form_state) {
+    $route_info = FieldUI::getOverviewRouteInfo($this->entity->getEntityType()->getBundleOf(), $this->entity->id());
+
+    if ($form_state->getTriggeringElement()['#parents'][0] === 'save_continue' && $route_info) {
+      $form_state->setRedirectUrl($route_info);
+    }
   }
 }

@@ -5,8 +5,8 @@ namespace Drupal\simple\Entity;
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 
 /**
- * Defines the Most Simple Type entity. A configuration entity used to manage
- * bundles for the Most Simple entity.
+ * Defines the Simple Type entity. A configuration entity used to manage
+ * bundles for the Simple entity.
  *
  * @ConfigEntityType(
  *   id = "simple_type",
@@ -24,7 +24,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   },
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\Core\Entity\EntityListBuilder",
+ *     "list_builder" = "Drupal\simple\SimpleTypeListBuilder",
  *     "form" = {
  *       "default" = "Drupal\simple\Form\SimpleTypeEntityForm",
  *       "add" = "Drupal\simple\Form\SimpleTypeEntityForm",

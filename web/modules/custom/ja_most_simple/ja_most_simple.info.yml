@@ -1,0 +1,5 @@
+name: Ja Most Simple
+type: module
+description: Este modulo define a una entidad de contenido con bundles muy basico, sin links
+core_version_requirement: ^9 || ^10
+package: Custom Entities

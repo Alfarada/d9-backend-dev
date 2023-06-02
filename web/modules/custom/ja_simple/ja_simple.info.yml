@@ -1,0 +1,5 @@
+name: Ja Simple
+type: module
+description: Este modulo define a una entidad de contenido con bundles nivel intermedio
+core_version_requirement: ^9 || ^10
+package: Custom Entities

@@ -1,0 +1,3 @@
+administer ja_simple types:
+  title: 'Administer Simple Entity types'
+  restrict access: true

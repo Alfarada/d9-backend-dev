@@ -1,5 +1,5 @@
-name: Simple Module
+name: Simple
 type: module
-package: custom
-description: Creating a simple content entity with bundles
-core_version_requirement: ^9
+description: Simple Entity with bundles that is much more usable than the Most Simple Entity with bundles.
+core_version_requirement: ^8.8 || ^9
+package: Custom Entities
