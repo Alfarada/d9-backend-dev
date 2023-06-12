@@ -1,6 +1,0 @@
-entity.section_entity.overview:
-  title: Section Entities
-  parent: system.admin_structure
-  description: "List of section entities to extend site functionality."
-  route_name: entity.section_entity.collection
-  weight: 99

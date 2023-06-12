@@ -1,0 +1,18 @@
+entities.section_entity.*:
+  type: config entity
+  label: 'Section config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    urlPattern:
+      type: string
+      label: 'URL pattern'
+    color:
+      type: string
+      label: 'Color'

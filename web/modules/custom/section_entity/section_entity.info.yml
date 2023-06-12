@@ -1,0 +1,5 @@
+name: Section Entity
+type: module
+description: Este modulo es una practica de como crear una entidad de configuracion según el libro
+core_version_requirement: ^9 || ^10
+package: Custom Entities

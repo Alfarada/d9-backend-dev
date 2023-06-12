@@ -1,5 +1,6 @@
 entity.section_entity.add_form:
   route_name: 'entity.section_entity.add_form'
-  title: 'Add section entity'
+  title: 'Add Section'
   appears_on:
     - entity.section_entity.collection
+
