@@ -1,0 +1,6 @@
+name: Test config entity
+type: module
+description: Test how to make configuration entity with drush generate
+package: Custom Entities
+core: 8.x
+core_version_requirement: ^8 || ^9

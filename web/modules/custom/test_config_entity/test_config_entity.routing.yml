@@ -1,0 +1,31 @@
+entity.foo_entity.collection:
+  path: '/admin/structure/foo-entity'
+  defaults:
+    _entity_list: 'foo_entity'
+    _title: 'Foo Entity configuration'
+  requirements:
+    _permission: 'administer foo_entity'
+
+entity.foo_entity.add_form:
+  path: '/admin/structure/foo-entity/add'
+  defaults:
+    _entity_form: 'foo_entity.add'
+    _title: 'Add a foo entity'
+  requirements:
+    _permission: 'administer foo_entity'
+
+entity.foo_entity.edit_form:
+  path: '/admin/structure/foo-entity/{foo_entity}'
+  defaults:
+    _entity_form: 'foo_entity.edit'
+    _title: 'Edit a foo entity'
+  requirements:
+    _permission: 'administer foo_entity'
+
+entity.foo_entity.delete_form:
+  path: '/admin/structure/foo-entity/{foo_entity}/delete'
+  defaults:
+    _entity_form: 'foo_entity.delete'
+    _title: 'Delete a foo entity'
+  requirements:
+    _permission: 'administer foo_entity'
