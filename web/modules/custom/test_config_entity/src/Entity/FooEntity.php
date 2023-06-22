@@ -26,7 +26,7 @@ use Drupal\test_config_entity\FooEntityInterface;
  *       "delete" = "Drupal\Core\Entity\EntityDeleteForm"
  *     },
  *     "route_provider" = {
- *        "html" = "Drupal\test_config_entity\FooEntityHtmlRouteProvider",
+ *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",
  *     },
  *   },
  *   config_prefix = "foo_entity",
