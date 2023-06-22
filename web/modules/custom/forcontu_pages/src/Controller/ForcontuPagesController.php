@@ -47,6 +47,7 @@ class ForcontuPagesController extends ControllerBase {
 
   public function user(UserInterface $user) {
     // Podemos usar directamente el objeto user
+
     $list[] = $this->t("Username: @username", ['@username' => $user->getAccountName()]);
 
     $list[] = $this->t("Email: @email", ['@email' => $user->getEmail()]);
