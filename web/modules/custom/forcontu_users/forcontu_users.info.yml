@@ -1,5 +1,0 @@
-name: Forcontu Users
-type: module
-description: Practice module to analyze the operation of access controls, roles and permissions.
-package: Forcontu
-core_version_requirement: ^9 || ^10

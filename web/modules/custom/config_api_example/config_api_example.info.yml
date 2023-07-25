@@ -1,0 +1,5 @@
+name: API Config Example
+type: module
+description: Probando los servicios de la API de configuracion
+package: Custom
+core_version_requirement: ^9 || ^10

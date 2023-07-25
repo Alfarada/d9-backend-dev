@@ -1,0 +1,6 @@
+<?php
+
+function config_api_example_install() {
+  // inicializando variable de estado con un valor predeterminado.
+  \Drupal::state()->set('config_api_example_counter', 0);
+};

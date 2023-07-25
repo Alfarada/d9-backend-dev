@@ -19,7 +19,6 @@ class Template extends ControllerBase {
     ];
 
     $data = [12, 8, 24];
-
     $build['item_test'] = [
       '#prefix' => '<p class="item-test-dimensions">',
       '#suffix' => '</p>',

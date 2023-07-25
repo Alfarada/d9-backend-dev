@@ -1,5 +1,0 @@
-name: Call Another Form
-type: module
-description: shows how to integrate a form from another module
-package: Example modules
-core_version_requirement: ^9 || ^8

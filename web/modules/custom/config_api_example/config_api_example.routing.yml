@@ -1,0 +1,23 @@
+config_api_example.example:
+  path: '/config-api-example/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\config_api_example\Controller\ConfigApiExampleController::build'
+  requirements:
+    _permission: 'access content'
+
+config_api_example.get_config:
+  path: '/config-api-example/config'
+  defaults:
+    _title: 'Configuration'
+    _controller: '\Drupal\config_api_example\Controller\ConfigApiExampleController::getConfig'
+  requirements:
+    _permission: 'access content'
+
+config_api_example.get_config_service:
+  path: '/config-api-example/config-service'
+  defaults:
+    _title: 'Configuration with Service'
+    _controller: '\Drupal\config_api_example\Controller\ConfigApiExampleController::getConfigWithService'
+  requirements:
+    _permission: 'access content'

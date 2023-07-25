@@ -22,8 +22,6 @@ function ja_theming_theme($existing, $type, $theme, $path) {
   ];
 }
 
-
-
 /**
  * Implements hook_preprocess_HOOK().
  */

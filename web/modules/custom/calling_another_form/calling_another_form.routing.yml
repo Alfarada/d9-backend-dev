@@ -1,7 +1,0 @@
-calling_another_form.caller_form:
-  path: '/calling_another_form/forms/caller_form'
-  defaults:
-    _title: 'Caller Form'
-    _form: 'Drupal\calling_another_form\Form\CallerForm'
-  requirements:
-    _permission: 'access content'
