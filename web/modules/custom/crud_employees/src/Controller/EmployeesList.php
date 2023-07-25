@@ -19,12 +19,13 @@ class EmployeesList extends ControllerBase {
   }
 
   public function __invoke(): array {
-    $rows = [];
+
     $employees = $this->database->select('employees_data', 'e')
       ->fields('e')
-      ->execute();
+      ->execute()
+      ->fetchAssoc();
 
-    if (!$employees->fetchAssoc()) {
+    if (!$employees) {
       return [
         '#markup' => $this->t('<h3>no employees registered</h3>')
       ];
@@ -32,7 +33,6 @@ class EmployeesList extends ControllerBase {
 
     $table['employees'] = [
       '#type' => 'table',
-      '#caption' => $this->t('Employee list'),
       '#header' => [
         'Number',
         'Fist Name',
@@ -41,7 +41,7 @@ class EmployeesList extends ControllerBase {
         'Office Code',
         'Job Title',
       ],
-      '#rows' => $rows,
+      '#rows' => [$employees],
     ];
 
     return $table;
