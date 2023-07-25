@@ -2,24 +2,30 @@
 
 namespace Drupal\crud_employees\Form;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a CRUD Employees form.
  */
 class EmployeesForm extends FormBase {
 
-  /**
-   * {@inheritdoc}
-   */
+  public function __construct(
+    protected Connection $database
+  ) {}
+
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('database')
+    );
+  }
+
   public function getFormId(): string {
     return 'crud_employees_id';
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form['first_name'] = [
       '#type' => 'textfield',
@@ -39,7 +45,6 @@ class EmployeesForm extends FormBase {
       '#required' => TRUE,
       '#size' => 20,
       '#maxlength' => 128,
-      '#pattern' => '@example.com',
       '#placeholder' => 'employee@gmail.com',
     ];
     $form['office_code'] = [
@@ -83,17 +88,27 @@ class EmployeesForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
-    if (mb_strlen($form_state->getValue('message')) < 10) {
-      $form_state->setErrorByName('message', $this->t('Message should be at least 10 characters.'));
-    }
+
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $this->messenger()->addStatus($this->t('The message has been sent.'));
-    $form_state->setRedirect('<front>');
+
+    $field_values = $form_state->getValues();
+    // insert values
+    $this->database->insert('employees_data')->fields([
+      'firstName' => $field_values['first_name'],
+      'lastName' => $field_values['last_name'],
+      'employeesEmail' => $field_values['email'],
+      'officeCode' => $field_values['office_code'],
+      'jobTitle' => $field_values['job_title'],
+    ])->execute();
+
+    $this->messenger()->addStatus($this->t('Employee successfully registered'));
+
+//    $form_state->setRedirect('<front>');
   }
 
 }
