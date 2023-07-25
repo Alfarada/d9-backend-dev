@@ -1,5 +1,0 @@
-name: Advertiser Entity
-type: module
-package: Example Content Entity Module
-description:  'Advertiser Entity Example'
-core_version_requirement: ^9
