@@ -27,28 +27,25 @@ class EmployeesForm extends FormBase {
       '#size' => 20,
       '#required' => TRUE,
     ];
-
     $form['last_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Last Name'),
       '#size' => 20,
       '#required' => TRUE,
     ];
-
     $form['email'] = [
       '#type' => 'email',
       '#title' => 'Employee email',
       '#required' => TRUE,
-      '#size' => 20, // tamaño del campo de text
-      '#maxlength' => 128, // tamaño de caracteres
+      '#size' => 20,
+      '#maxlength' => 128,
       '#pattern' => '@example.com',
       '#placeholder' => 'employee@gmail.com',
     ];
-
     $form['office_code'] = [
       '#type' => 'number',
       '#title' => 'Office code',
-      '#required' => TRUE
+      '#required' => TRUE,
     ];
 
     $job_options = [
@@ -68,7 +65,7 @@ class EmployeesForm extends FormBase {
       '#default_value' => $job_options[0],
       '#options' => $job_options,
       '#description' => 'Select Job',
-      '#required' => TRUE
+      '#required' => TRUE,
     ];
 
     $form['actions'] = [
