@@ -1,0 +1,5 @@
+name: CRUD Employees
+type: module
+description: This module puts into practice the knowledge of services, menu links, configuration, forms and form elements.
+package: Custom Form
+core_version_requirement: ^9 || ^10
