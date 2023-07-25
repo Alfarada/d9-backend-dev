@@ -107,8 +107,7 @@ class EmployeesForm extends FormBase {
     ])->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully registered'));
-
-//    $form_state->setRedirect('<front>');
+    $form_state->setRedirect('employees.list');
   }
 
 }

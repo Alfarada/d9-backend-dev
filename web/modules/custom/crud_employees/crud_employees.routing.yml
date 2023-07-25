@@ -5,3 +5,11 @@ crud_employees.create:
     _title: 'Register Employees'
   requirements:
     _permission: 'access content'
+
+employees.list:
+  path: '/admin/employees/list'
+  defaults:
+    _controller: '\Drupal\crud_employees\Controller\EmployeesList'
+    _title: 'Employees list'
+  requirements:
+    _permission: 'access content'
