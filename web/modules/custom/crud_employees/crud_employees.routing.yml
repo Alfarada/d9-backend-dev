@@ -1,0 +1,7 @@
+crud_employees.create:
+  path: '/admin/employees/create'
+  defaults:
+    _form: '\Drupal\crud_employees\Form\EmployeesForm'
+    _title: 'Register Employees'
+  requirements:
+    _permission: 'access content'
