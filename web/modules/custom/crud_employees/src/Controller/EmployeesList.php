@@ -2,64 +2,64 @@
 
 namespace Drupal\crud_employees\Controller;
 
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Database\Connection;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EmployeesList extends ControllerBase {
 
   public function __construct(
-    protected Connection $database
+    protected Connection $database,
+    protected RendererInterface $renderer
   ) {}
 
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('database')
+      $container->get('database'),
+      $container->get('renderer')
     );
   }
 
   public function __invoke(): array {
-    $query = $this->database->select('employees_data', 'e')
+    $employees = $this->database->select('employees_data', 'e')
       ->fields('e')
-      ->execute();
+      ->execute()
+      ->fetchAll();
 
-    $employees_data = $query->fetchAll();
-
-    if (!$employees_data) {
+    if (!$employees) {
       return [
         '#markup' => $this->t('<h3>no employees registered</h3>'),
       ];
     }
 
-    // dropbutton element
-    $options['dropbutton'] = [
-      '#type' => 'dropbutton',
-      '#links' => [
-        'edit' => [
-          'title' => $this->t('Edit'),
-          'url' => Url::fromRoute('employees.list'),
+    // transform to an array of arrays
+    $employee_collection = [];
+    foreach ($employees as $employee) {
+      // build a dropbutton with the employee id
+      $options = [
+        '#type' => 'dropbutton',
+        '#links' => [
+          'edit' => [
+            'title' => $this->t('Edit'),
+            'url' => Url::fromRoute('employees.list',
+              ['employee' => $employee->employeesNumber]),
+          ],
+          'delete' => [
+            'title' => $this->t('Delete'),
+            'url' => Url::fromRoute('employees.list',
+              ['employee' => $employee->employeesNumber]),
+          ],
         ],
-        'delete' => [
-          'title' => $this->t('Delete'),
-          'url' => Url::fromRoute('employees.list'),
-        ],
-      ],
-    ];
+      ];
 
-    // transform a renderable array into HTML output
-    $render = \Drupal::service('renderer');
-    $dropbutton = $render->render($options);
-
-    // transforming to an array of arrays
-    $rows = [];
-    foreach ($employees_data as $employee) {
-      // object to array
+      // convert object to array
       $employee = (array) $employee;
-      // push dropbutton
-      $employee['options'] = $dropbutton;
-      // save
-      $rows[] = $employee;
+      // set dropbutton on the employee details
+      // and renders the options array to convert it to HTML output
+      $employee['dropbutton'] = $this->renderer->render($options);
+      $employee_collection[] = $employee;
     }
 
     $table['employees'] = [
@@ -73,7 +73,7 @@ class EmployeesList extends ControllerBase {
         'Job Title',
         'Options',
       ],
-      '#rows' => $rows,
+      '#rows' => $employee_collection,
     ];
 
     return $table;

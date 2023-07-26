@@ -6,6 +6,14 @@ crud_employees.create:
   requirements:
     _permission: 'access content'
 
+crud_employees.edit:
+  path: '/admin/employees/edit/{employee}'
+  defaults:
+    _form: '\Drupal\crud_employees\Form\EmployeesEditForm'
+    _title: 'Edit Employee'
+  requirements:
+    _permission: 'access content'
+
 employees.list:
   path: '/admin/employees/list'
   defaults:
