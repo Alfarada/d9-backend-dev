@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides a CRUD Employees form.
  */
-class EmployeesForm extends FormBase {
+class EmployeesCreateForm extends FormBase {
 
   const JOB_OPTIONS = [
     '-None-',
@@ -34,7 +34,7 @@ class EmployeesForm extends FormBase {
   }
 
   public function getFormId(): string {
-    return 'crud_employees_id';
+    return 'crud_employees_create_form';
   }
 
   public function buildForm(array $form, FormStateInterface $form_state): array {

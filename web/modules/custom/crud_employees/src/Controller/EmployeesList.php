@@ -2,9 +2,9 @@
 
 namespace Drupal\crud_employees\Controller;
 
-use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -38,18 +38,18 @@ class EmployeesList extends ControllerBase {
     $employee_collection = [];
     foreach ($employees as $employee) {
       // build a dropbutton with the employee id
-      $options = [
+      $dropbutton = [
         '#type' => 'dropbutton',
         '#links' => [
           'edit' => [
             'title' => $this->t('Edit'),
-            'url' => Url::fromRoute('employees.list',
-              ['employee' => $employee->employeesNumber]),
+            'url' => Url::fromRoute('crud_employees.edit',
+              ['employee' => $employee->id]),
           ],
           'delete' => [
             'title' => $this->t('Delete'),
             'url' => Url::fromRoute('employees.list',
-              ['employee' => $employee->employeesNumber]),
+              ['employee' => $employee->id]),
           ],
         ],
       ];
@@ -57,15 +57,15 @@ class EmployeesList extends ControllerBase {
       // convert object to array
       $employee = (array) $employee;
       // set dropbutton on the employee details
-      // and renders the options array to convert it to HTML output
-      $employee['dropbutton'] = $this->renderer->render($options);
+      // and renders array to convert it to HTML output
+      $employee['dropbutton'] = $this->renderer->render($dropbutton);
       $employee_collection[] = $employee;
     }
 
     $table['employees'] = [
       '#type' => 'table',
       '#header' => [
-        'Number',
+        'ID',
         'Fist Name',
         'Last Name',
         'Email',
@@ -75,7 +75,6 @@ class EmployeesList extends ControllerBase {
       ],
       '#rows' => $employee_collection,
     ];
-
     return $table;
   }
 
