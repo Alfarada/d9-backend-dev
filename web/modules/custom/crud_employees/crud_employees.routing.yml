@@ -14,6 +14,14 @@ crud_employees.edit:
   requirements:
     _permission: 'access content'
 
+crud_employees.delete:
+  path: '/admin/employees/delete/{employee}'
+  defaults:
+    _form: '\Drupal\crud_employees\Form\EmployeesDeleteForm'
+    _title: 'Delete Employee'
+  requirements:
+    _permission: 'access content'
+
 employees.list:
   path: '/admin/employees/list'
   defaults:

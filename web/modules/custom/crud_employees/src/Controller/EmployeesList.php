@@ -49,13 +49,12 @@ class EmployeesList extends ControllerBase {
           ],
           'delete' => [
             'title' => $this->t('Delete'),
-            'url' => Url::fromRoute('employees.list',
+            'url' => Url::fromRoute('crud_employees.delete',
               ['employee' => $employee->id]),
           ],
         ],
       ];
 
-      dpm($employee);
       // convert object to array
       $employee = (array) $employee;
       // set current job title

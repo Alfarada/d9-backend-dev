@@ -2,10 +2,9 @@
 
 namespace Drupal\crud_employees\Form;
 
-use Drupal\Core\Form\FormBase;
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\{FormBase, FormStateInterface};
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EmployeesEditForm extends FormBase {
