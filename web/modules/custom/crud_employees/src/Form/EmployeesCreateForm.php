@@ -84,28 +84,28 @@ class EmployeesCreateForm extends FormBase {
     return $form;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
-    // select job title except "-none-"
+    $first_name = $form_state->getValue('first_name');
+    $last_name = $form_state->getValue('last_name');
     $job_title = $form_state->getValue('job_title');
+
+    // select job title except "-none-"
     if (!$job_title) {
       $form_state->setErrorByName('job_title', $this->t('Please select a job title'));
     }
 
-    if (strlen($form_state->getValue('first_name')) <= 3) {
-      $form_state->setErrorByName('first_name', $this->t('Your first name must contain at least 3 characters '));
+    // first name must be greater than or equal to three characters
+    // must be a string and cannot be a numeric string
+    if (strlen($first_name) < 3 || preg_match('/[0-9]/', $first_name) === 1) {
+      $form_state->setErrorByName('first_name', $this->t('Your first name must contain at least 3 non-numeric characters '));
     }
 
-    if (strlen($form_state->getValue('last_name')) <= 3) {
-      $form_state->setErrorByName('first_name', $this->t('Your last name must contain at least 3 characters'));
+    // same for second name
+    if (strlen($last_name) < 3 || preg_match('/[0-9]/', $last_name) === 1) {
+      $form_state->setErrorByName('last_name', $this->t('Your last name must contain at least 3 non-numeric characters'));
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $field_values = $form_state->getValues();
     // insert values
