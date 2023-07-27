@@ -87,7 +87,12 @@ class EmployeesCreateForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {}
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
+    $job_title = $form_state->getValue('job_title');
+    if (!$job_title) {
+      $form_state->setErrorByName('job_title', $this->t('Please select a job title'));
+    }
+  }
 
   /**
    * {@inheritdoc}
@@ -95,16 +100,16 @@ class EmployeesCreateForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $field_values = $form_state->getValues();
     // insert values
-        $this->database->insert('employees_data')->fields([
-          'firstName' => $field_values['first_name'],
-          'lastName' => $field_values['last_name'],
-          'employeesEmail' => $field_values['email'],
-          'officeCode' => $field_values['office_code'],
-          'jobTitle' => $field_values['job_title'],
-        ])->execute();
+    $this->database->insert('employees_data')->fields([
+      'firstName' => $field_values['first_name'],
+      'lastName' => $field_values['last_name'],
+      'employeesEmail' => $field_values['email'],
+      'officeCode' => $field_values['office_code'],
+      'jobTitle' => $field_values['job_title'],
+    ])->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully registered'));
-        $form_state->setRedirect('employees.list');
+    $form_state->setRedirect('employees.list');
   }
 
 }
