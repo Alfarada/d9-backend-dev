@@ -94,14 +94,13 @@ class EmployeesCreateForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $field_values = $form_state->getValues();
-    $job_option = self::JOB_OPTIONS[$field_values['job_title']];
     // insert values
         $this->database->insert('employees_data')->fields([
           'firstName' => $field_values['first_name'],
           'lastName' => $field_values['last_name'],
           'employeesEmail' => $field_values['email'],
           'officeCode' => $field_values['office_code'],
-          'jobTitle' => $job_option,
+          'jobTitle' => $field_values['job_title'],
         ])->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully registered'));
