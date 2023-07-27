@@ -40,7 +40,7 @@ class EmployeesEditForm extends FormBase {
     $employee_id = $this->getRouteMatch()->getParameter('employee');
     $employee_data = $this->database->select('employees_data', 'e')
       ->fields('e')
-      ->condition('id', $employee_id)
+      ->condition('e.id', $employee_id)
       ->execute()
       ->fetchAssoc();
 
@@ -103,6 +103,7 @@ class EmployeesEditForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $field_values = $form_state->getValues();
+    $employee_id = $this->getRouteMatch()->getParameter('employee');
     // insert values
     $this->database->update('employees_data')->fields([
       'firstName' => $field_values['first_name'],
@@ -110,7 +111,9 @@ class EmployeesEditForm extends FormBase {
       'employeesEmail' => $field_values['email'],
       'officeCode' => $field_values['office_code'],
       'jobTitle' => $field_values['job_title'],
-    ])->execute();
+    ])
+      ->condition('id', $employee_id)
+      ->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully updated'));
     $form_state->setRedirect('employees.list');
