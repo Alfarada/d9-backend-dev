@@ -26,10 +26,22 @@ class EmployeesDeleteForm extends FormBase {
     return 'crud_employees_delete_form';
   }
 
+  public function employeeFullName(): string {
+    $employee_id = $this->getRouteMatch()->getParameter('employee');
+    $employee = $this->database->select('employees_data', 'e')
+      ->fields('e', ['firstName', 'lastName'])
+      ->condition('e.id', $employee_id)
+      ->execute()
+      ->fetchAssoc();
+
+    return ucwords($employee['firstName'] . ' ' . $employee['lastName']);
+
+  }
   public function buildForm(array $form, FormStateInterface $form_state): array {
 
     $form['delete_message'] = [
-      '#markup' => $this->t('<h3> Are you sure to delete this record ? </h3>')
+      '#markup' => $this->t(
+        "<h4> Are you sure to delete the employee record <em style='color:red;'>{$this->employeeFullName()}</em> ? </h4>"),
     ];
     $form['actions'] = [
       '#type' => 'actions',
@@ -43,6 +55,7 @@ class EmployeesDeleteForm extends FormBase {
   }
 
   public function validateForm(array &$form, FormStateInterface $form_state): void {}
+
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $employee_id = $this->getRouteMatch()->getParameter('employee');
     $this->database->delete('employees_data')
