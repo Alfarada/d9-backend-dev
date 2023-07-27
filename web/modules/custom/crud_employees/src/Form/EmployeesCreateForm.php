@@ -88,9 +88,18 @@ class EmployeesCreateForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
+    // select job title except "-none-"
     $job_title = $form_state->getValue('job_title');
     if (!$job_title) {
       $form_state->setErrorByName('job_title', $this->t('Please select a job title'));
+    }
+
+    if (strlen($form_state->getValue('first_name')) <= 3) {
+      $form_state->setErrorByName('first_name', $this->t('Your first name must contain at least 3 characters '));
+    }
+
+    if (strlen($form_state->getValue('last_name')) <= 3) {
+      $form_state->setErrorByName('first_name', $this->t('Your last name must contain at least 3 characters'));
     }
   }
 
