@@ -1,0 +1,5 @@
+crud_employees.add_employee:
+  route_name: crud_employees.create
+  title: 'Add Employee'
+  appears_on:
+    - employees.list
