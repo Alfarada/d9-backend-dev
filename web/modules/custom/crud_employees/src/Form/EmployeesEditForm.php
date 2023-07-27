@@ -2,9 +2,10 @@
 
 namespace Drupal\crud_employees\Form;
 
-use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormBase;
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EmployeesEditForm extends FormBase {
@@ -21,12 +22,14 @@ class EmployeesEditForm extends FormBase {
   ];
 
   public function __construct(
-    protected Connection $database
+    protected Connection $database,
+    protected RouteMatchInterface $route_match
   ) {}
 
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('database')
+      $container->get('database'),
+      $container->get('current_route_match')
     );
   }
 
@@ -35,17 +38,26 @@ class EmployeesEditForm extends FormBase {
   }
 
   public function buildForm(array $form, FormStateInterface $form_state): array {
+    $employee_id = $this->getRouteMatch()->getParameter('employee');
+    $employee_data = $this->database->select('employees_data', 'e')
+      ->fields('e')
+      ->condition('id', $employee_id)
+      ->execute()
+      ->fetchAssoc();
+
     $form['first_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('First Name'),
       '#size' => 20,
       '#required' => TRUE,
+      '#default_value' => $employee_data['firstName']
     ];
     $form['last_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Last Name'),
       '#size' => 20,
       '#required' => TRUE,
+      '#default_value' => $employee_data['lastName']
     ];
     $form['email'] = [
       '#type' => 'email',
@@ -53,18 +65,19 @@ class EmployeesEditForm extends FormBase {
       '#required' => TRUE,
       '#size' => 20,
       '#maxlength' => 128,
-      '#placeholder' => 'employee@gmail.com',
+      '#default_value' => $employee_data['employeesEmail']
     ];
     $form['office_code'] = [
       '#type' => 'number',
       '#title' => 'Office code',
       '#required' => TRUE,
+      '#default_value' => $employee_data['officeCode']
     ];
 
     $form['job_title'] = [
       '#type' => 'select',
       '#title' => $this->t('Job Tittle'),
-      '#default_value' => self::JOB_OPTIONS[0],
+      '#default_value' => $employee_data['jobTitle'],
       '#options' => self::JOB_OPTIONS,
       '#description' => 'Select Job',
       '#required' => TRUE,
@@ -93,7 +106,7 @@ class EmployeesEditForm extends FormBase {
     $field_values = $form_state->getValues();
     $job_option = self::JOB_OPTIONS[$field_values['job_title']];
     // insert values
-    $this->database->insert('employees_data')->fields([
+    $this->database->update('employees_data')->fields([
       'firstName' => $field_values['first_name'],
       'lastName' => $field_values['last_name'],
       'employeesEmail' => $field_values['email'],
@@ -101,7 +114,7 @@ class EmployeesEditForm extends FormBase {
       'jobTitle' => $job_option,
     ])->execute();
 
-    $this->messenger()->addStatus($this->t('Employee successfully registered'));
+    $this->messenger()->addStatus($this->t('Employee successfully updated'));
     $form_state->setRedirect('employees.list');
   }
 
