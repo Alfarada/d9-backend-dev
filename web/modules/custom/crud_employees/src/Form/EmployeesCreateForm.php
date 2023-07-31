@@ -61,6 +61,8 @@ class EmployeesCreateForm extends FormBase {
     $form['office_code'] = [
       '#type' => 'number',
       '#title' => 'Office code',
+      '#min' => 0,
+      '#max' => 300,
       '#required' => TRUE,
     ];
 

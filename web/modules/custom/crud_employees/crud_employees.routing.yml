@@ -29,3 +29,11 @@ employees.list:
     _title: 'Employees list'
   requirements:
     _permission: 'access content'
+
+crud_employees.forms_link_menu:
+  path: '/admin/employee-forms'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Employee forms'
+  requirements:
+    _permission: 'access content'

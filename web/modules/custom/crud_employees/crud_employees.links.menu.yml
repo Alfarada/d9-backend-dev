@@ -1,0 +1,6 @@
+crud_employees.forms_link_menu:
+  title: 'Employee forms'
+  description: 'list all employee forms'
+  parent: system.admin
+  route_name: crud_employees.forms_link_menu
+  weight: -12
