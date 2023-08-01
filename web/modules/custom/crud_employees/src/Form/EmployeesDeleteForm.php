@@ -63,7 +63,7 @@ class EmployeesDeleteForm extends FormBase {
       ->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully deleted'));
-    $form_state->setRedirect('employees.list');
+    $form_state->setRedirect('crud_employees.list');
   }
 
 }

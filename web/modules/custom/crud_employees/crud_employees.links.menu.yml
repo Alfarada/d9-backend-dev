@@ -1,6 +1,24 @@
-crud_employees.forms_link_menu:
-  title: 'Employee forms'
+crud_employees.forms_list.link_menu:
+  title: 'Custom forms'
   description: 'list all employee forms'
   parent: system.admin
   route_name: crud_employees.forms_link_menu
   weight: -12
+
+crud_employees.employees_form_group.link_menu:
+  title: 'Employees'
+  description: 'List all form employees'
+  parent: crud_employees.forms_list.link_menu
+  route_name: crud_employees.list
+
+crud_employees.employees_create_form.link_menu:
+  title: 'Add'
+  description: 'Employee registration form'
+  parent: crud_employees.employees_form_group.link_menu
+  route_name: crud_employees.create
+
+crud_employees.employees_list_form.link_menu:
+  title: 'List'
+  description: 'Displays the list of all employees'
+  parent: crud_employees.employees_form_group.link_menu
+  route_name: crud_employees.list

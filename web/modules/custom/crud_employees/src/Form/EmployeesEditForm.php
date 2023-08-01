@@ -96,7 +96,23 @@ class EmployeesEditForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state): void {}
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
+    $first_name = $form_state->getValue('first_name');
+    $last_name = $form_state->getValue('last_name');
+    $job_title = $form_state->getValue('job_title');
+
+    if (!$job_title) {
+      $form_state->setErrorByName('job_title', $this->t('Please select a job title'));
+    }
+
+    if (strlen($first_name) < 3 || preg_match('/[0-9]/', $first_name) === 1) {
+      $form_state->setErrorByName('first_name', $this->t('Your first name must contain at least 3 non-numeric characters '));
+    }
+
+    if (strlen($last_name) < 3 || preg_match('/[0-9]/', $last_name) === 1) {
+      $form_state->setErrorByName('last_name', $this->t('Your last name must contain at least 3 non-numeric characters'));
+    }
+  }
 
   /**
    * {@inheritdoc}
@@ -116,7 +132,7 @@ class EmployeesEditForm extends FormBase {
       ->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully updated'));
-    $form_state->setRedirect('employees.list');
+    $form_state->setRedirect('crud_employees.list');
   }
 
 }

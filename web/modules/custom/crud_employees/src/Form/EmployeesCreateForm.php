@@ -55,8 +55,7 @@ class EmployeesCreateForm extends FormBase {
       '#title' => 'Employee email',
       '#required' => TRUE,
       '#size' => 20,
-      '#maxlength' => 128,
-      '#placeholder' => 'employee@gmail.com',
+      '#maxlength' => 128
     ];
     $form['office_code'] = [
       '#type' => 'number',
@@ -110,7 +109,6 @@ class EmployeesCreateForm extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $field_values = $form_state->getValues();
-    // insert values
     $this->database->insert('employees_data')->fields([
       'firstName' => $field_values['first_name'],
       'lastName' => $field_values['last_name'],
@@ -120,7 +118,7 @@ class EmployeesCreateForm extends FormBase {
     ])->execute();
 
     $this->messenger()->addStatus($this->t('Employee successfully registered'));
-    $form_state->setRedirect('employees.list');
+    $form_state->setRedirect('crud_employees.list');
   }
 
 }
