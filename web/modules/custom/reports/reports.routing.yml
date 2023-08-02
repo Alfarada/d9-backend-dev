@@ -1,0 +1,16 @@
+reports.example:
+  path: '/admin/reports/customers'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\reports\Controller\ReportsController::getCustomers'
+  requirements:
+    _permission: 'access content'
+
+customers.details:
+  path: '/admin/reports/customers/details/{customer}'
+  defaults:
+    _title: 'Customer details'
+    _controller: '\Drupal\reports\Controller\ReportsController::customersDetails'
+  requirements:
+    _permission: 'access content'
+

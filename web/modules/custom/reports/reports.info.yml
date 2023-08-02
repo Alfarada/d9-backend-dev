@@ -1,0 +1,5 @@
+name: Reports
+type: module
+description: practice on forms and queries to databases.
+package: Custom
+core_version_requirement: ^9 || ^10
