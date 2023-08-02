@@ -1,7 +1,7 @@
 reports.example:
   path: '/admin/reports/customers'
   defaults:
-    _title: 'Example'
+    _title: 'Customers list'
     _controller: '\Drupal\reports\Controller\ReportsController::getCustomers'
   requirements:
     _permission: 'access content'
