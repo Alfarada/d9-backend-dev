@@ -1,6 +1,0 @@
-name: Reports db examples
-type: module
-description: El propósito de este modulo es poner en practica los conocimientos para crear consultas a la base de datos, controladores, rutas, formularios y permisos
-package: Custom
-core: 8.x
-core_version_requirement: ^8 || ^9
