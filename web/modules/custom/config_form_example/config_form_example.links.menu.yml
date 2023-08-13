@@ -1,0 +1,6 @@
+config_form_example.config:
+  title: Config Form Settings
+  description: Configuration form example
+  parent: system.admin_config_development
+  route_name: config_form_example.config
+  weight: 10

@@ -1,0 +1,4 @@
+config example form access:
+  title: 'Administer config_form_example configuration'
+  description: 'Optional description.'
+#  restrict access: true

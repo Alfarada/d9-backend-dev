@@ -1,0 +1,8 @@
+# Schema for the configuration files of the Config form example module.
+#config_form_example.settings:
+#  type: config_object
+#  label: 'Config form example settings'
+#  mapping:
+#    example:
+#      type: string
+#      label: 'Example'
