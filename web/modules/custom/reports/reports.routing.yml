@@ -1,16 +1,24 @@
-reports.example:
-  path: '/admin/reports/customers'
-  defaults:
-    _title: 'Customers list'
-    _controller: '\Drupal\reports\Controller\ReportsController::getCustomers'
-  requirements:
-    _permission: 'access content'
-
-customers.details:
+reports.customers_details:
   path: '/admin/reports/customers/details/{customer}'
   defaults:
     _title: 'Customer details'
     _controller: '\Drupal\reports\Controller\ReportsController::customersDetails'
+  requirements:
+    _permission: 'access content'
+
+reports.customers.tab1:
+  path: '/admin/reports/customers'
+  defaults:
+    _title: 'Customers'
+    _controller: '\Drupal\reports\Controller\ReportsController::getCustomers'
+  requirements:
+    _permission: 'access content'
+
+reports.customers_total_payments.tab2:
+  path: '/admin/reports/customers/total-payments'
+  defaults:
+    _title: 'Customer Total Payments'
+    _controller: '\Drupal\reports\Controller\ReportsController::getTotalPayments'
   requirements:
     _permission: 'access content'
 
