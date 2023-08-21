@@ -1,0 +1,90 @@
+<?php
+/**
+ * El orden en el que se ejecutan los hooks que modifican formularios es la
+ * siguiente:
+ *
+ * - hook_form_alter()
+ * - hook_form_BASE_FORM_ID_alter()
+ * - hook_form_FORM_ID_alter()
+ *
+ * Para cada modulo, los ganchos mas generales son llamados de primero seguido
+ * por el mas especifico.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function config_form_example_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void {
+  // para obtener el id del formulario base, esto funciona para los formularios de entidades
+  // de contenido
+  // dpm($form_state->getBuildInfo()['base_form_id']);
+
+  switch ($form_id) {
+    case 'node_page_form':
+    case 'node_page_edit_form':
+      $form['options']['#open'] = TRUE;
+      $form['options']['highlighted'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Highlighted'),
+        '#weight' => 100,
+      ];
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node_form
+ */
+
+function config_form_example_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void {
+
+  // defaults to zero, even before the node has been created
+  $highlighted = 0;
+  $connection = \Drupal::database();
+
+  // if the node exists, then it performs a query to check if the content is highlighted
+  if ($nid = $form_state->getFormObject()->getEntity()->id()) {
+    $highlighted = $connection->select('config_form_example_highlighted', 'c')
+      ->fields('c', ['highlighted'])
+      ->condition('c.nid', $nid)
+      ->execute()
+      ->fetchField();
+  }
+
+  $form['options']['#open'] = TRUE;
+  // sets the value of the highlighted content as the default value
+  $form['options']['highlighted'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Highlighted'),
+    '#weight' => 100,
+    '#default_value' => $highlighted
+  ];
+
+  // este es un submit adicional y la estructua es
+  // MODULE_NAME_node_form_submit
+  $form['actions']['submit']['#submit'][] = 'config_form_example_node_form_submit';
+}
+
+function config_form_example_node_form_submit(array &$form, \Drupal\Core\Form\FormStateInterface $form_state): array {
+
+  $nid = $form_state->get('nid');
+  $highlighted = $form_state->getValue('highlighted');
+
+  $connection = \Drupal::database();
+  $upsert = $connection->upsert('config_form_example_highlighted')
+    ->key('nid')
+    ->fields(['nid', 'highlighted'])
+    ->values([
+      'nid' => $nid,
+      'highlighted' => $highlighted])
+    ->execute();
+
+  return [];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for system_site_information_settings.
+ */
+function config_form_example_form_system_site_information_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void {
+  $form['site_information']['site_slogan']['#required'] = TRUE;
+}
