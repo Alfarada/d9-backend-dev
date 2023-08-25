@@ -5,3 +5,11 @@ config_form_example.config:
     _form: 'Drupal\config_form_example\Form\ConfigFormExample'
   requirements:
     _permission: 'config example form access'
+
+config_form_example.confirm_form:
+  path: '/admin/config-form-example/confirm-form/{node}'
+  defaults:
+    _title: 'Confirm form example'
+    _form: 'Drupal\config_form_example\Form\ConfirmFormExample'
+  requirements:
+    _permission: 'config example form access'

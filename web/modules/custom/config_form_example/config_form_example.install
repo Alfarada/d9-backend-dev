@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function config_form_example_schema(): array {
+  $schema['config_form_example_highlighted'] = [
+    'description' => 'Save highlighted content.',
+    'fields' => [
+      'nid' => [
+        'description' => 'node id',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'highlighted' => [
+        'description' => 'highlighted content.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'default' => 0,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['nid'],
+  ];
+
+  return $schema;
+}
