@@ -26,5 +26,4 @@ class BlockExample extends BlockBase {
       'label_display' => FALSE
     ];
   }
-
 }
