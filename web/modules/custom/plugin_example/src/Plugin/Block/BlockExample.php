@@ -16,7 +16,14 @@ class BlockExample extends BlockBase {
 
   public function build(): array {
     return [
-      '#markup' => '<span>' . $this->t(' Lorem ipsum dolor sit amet, consectetur adipiscing elit.') . '</span>',
+      '#markup' => '<span>' . $this->t('Simple block.') . '</span>',
+    ];
+  }
+
+  public function defaultConfiguration(): array {
+    return [
+      'label' => 'Custom Title',
+      'label_display' => FALSE
     ];
   }
 

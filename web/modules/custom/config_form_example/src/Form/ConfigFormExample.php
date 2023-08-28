@@ -36,6 +36,7 @@ class ConfigFormExample extends ConfigFormBase {
 
     // content list
     $node_types = node_type_get_names();
+    dpm($node_types);
 
     $form['config_form_allowed_types'] = [
       '#type' => 'checkboxes',
