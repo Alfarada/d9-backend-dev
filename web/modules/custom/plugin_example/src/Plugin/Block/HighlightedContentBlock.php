@@ -20,6 +20,13 @@ class HighlightedContentBlock extends BlockBase {
     ] ;
   }
 
+  public function blockValidate($form, FormStateInterface $form_state): void {
+    if (strlen($form_state->getValue('block_message')) < 10) {
+      $form_state->setErrorByName('block_message',
+        $this->t('The text must be  at leaft 10 characters long'));
+    }
+  }
+
   public function blockForm($form, FormStateInterface $form_state): array {
     $form['block_message'] = [
       '#type' => 'textfield',
