@@ -2,6 +2,7 @@
 
 namespace Drupal\plugin_example\Plugin\Block;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Block\Annotation\Block;
 use Drupal\Core\Annotation\Translation;
@@ -113,6 +114,10 @@ class HighlightedContentBlock extends BlockBase implements ContainerFactoryPlugi
       $form_state->setErrorByName('block_message',
         $this->t('The text must be  at leaft 10 characters long'));
     }
+  }
+
+  public function blockAccess(AccountInterface $account): AccessResult {
+    return AccessResult::allowedIfHasPermission($account, 'access content');
   }
 
   public function blockSubmit($form, FormStateInterface $form_state): void {
