@@ -43,8 +43,6 @@ class NodeVotingForm extends FormBase {
         ->execute()
         ->fetchField();
 
-      dpm($node_vote);
-
       $form['node_vote'] = [
         '#type' => 'radios',
         '#title' => $this->t('Node voting'),
