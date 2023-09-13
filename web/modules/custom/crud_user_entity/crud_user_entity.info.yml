@@ -1,0 +1,5 @@
+name: CRUD User Entity
+type: module
+description: This module puts into practice everything related to the user and entity storage.
+package: Custom Form
+core_version_requirement: ^9 || ^10

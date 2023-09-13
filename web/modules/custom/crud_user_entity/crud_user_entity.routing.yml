@@ -1,0 +1,7 @@
+crud_user_entity.create:
+  path: '/admin/crud-user-entity/create'
+  defaults:
+    _form: '\Drupal\crud_user_entity\Form\UserEntityForm'
+    _title: 'User create'
+  requirements:
+    _access: 'TRUE'
