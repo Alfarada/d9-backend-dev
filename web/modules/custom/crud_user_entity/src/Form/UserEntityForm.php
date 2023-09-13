@@ -33,7 +33,7 @@ class UserEntityForm extends FormBase {
       '#size' => 35
     ];
 
-    $form['pass_confirm'] = [
+    $form['pass'] = [
       '#type' => 'password_confirm',
     ];
 
@@ -44,11 +44,41 @@ class UserEntityForm extends FormBase {
       '#size' => 35
     ];
 
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#attributes' => [
+        'class' => ['button--primary']
+      ],
+      '#value' => $this->t('Save'),
+    ];
+
+
     return $form;
   }
 
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    // TODO: Implement submitForm() method.
+  /**
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
+    $name = $form_state->getValue('name');
+    $pass = $form_state->getValue('pass');
+    $mail = $form_state->getValue('mail');
+
+    $user_storage = $this->entity_type->getStorage('user');
+    $new_user = $user_storage->create([
+      'name' => $name,
+      'pass' => $pass,
+      'mail' => $mail
+    ]);
+    // save in storage
+    $new_user->save();
+    $this->messenger()->addStatus($this->t('User successfully registered'));
   }
 
 }

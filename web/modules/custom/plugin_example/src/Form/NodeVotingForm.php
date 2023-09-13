@@ -31,6 +31,7 @@ class NodeVotingForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state): array {
 
     $node_vote = NULL;
+    $form = [];
     $votes = range(1, 5);
     $node = $this->currentRouteMatch->getParameter('node');
     $nid = $node ? $node->id() : NULL;
@@ -66,10 +67,8 @@ class NodeVotingForm extends FormBase {
         '#type' => 'submit',
         '#value' => $this->t('Vote')
       ];
-
-      return $form;
     }
-
+    return $form;
   }
 
   public function validateForm(array &$form, FormStateInterface $form_state) {
