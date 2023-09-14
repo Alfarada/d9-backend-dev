@@ -6,6 +6,14 @@ crud_user_entity.create:
   requirements:
     _access: 'TRUE'
 
+crud_user_entity.view:
+  path: '/admin/crud-user-entity/view-details/{user}'
+  defaults:
+    _controller: '\Drupal\crud_user_entity\Controller\UserEntityViewController'
+    _title: 'View User Details'
+  requirements:
+    _access: 'TRUE'
+
 crud_user_entity.edit:
   path: '/admin/crud-user-entity/edit'
   defaults:

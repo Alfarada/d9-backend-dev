@@ -1,0 +1,17 @@
+crud_user_entity.create_tab:
+  route_name: crud_user_entity.create
+  base_route: crud_user_entity.create
+  title: 'Create'
+  weight: 0
+
+crud_user_entity.edit_tab:
+  route_name: crud_user_entity.edit
+  base_route: crud_user_entity.create
+  title: 'Edit'
+  weight: 0
+
+crud_user_entity.delete_tab:
+  route_name: crud_user_entity.delete
+  base_route: crud_user_entity.create
+  title: 'Delete'
+  weight: 0
