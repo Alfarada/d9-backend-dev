@@ -10,7 +10,6 @@ use Drupal\crud_employees\Form\EmployeesCreateForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EmployeesList extends ControllerBase {
-
   public function __construct(
     protected Connection $database,
     protected RendererInterface $renderer

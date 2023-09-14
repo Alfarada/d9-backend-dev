@@ -7,7 +7,6 @@ function crud_user_entity_help($route_name, \Drupal\Core\Routing\RouteMatchInter
       $output = '';
       $output .= '<ul><li>Servicio : <b>current_user </b>';
       $output .= '<ul><li type="circle">No es la entidad User en si</li>';
-      $output .= '<li type="circle">No es la entidad User en si</li>';
       $output .= '<li type="circle">Permite consultar informacion relacionada con el usuario actual, pero no modificarla</li>';
       $output .= '<li type="circle">Las operaciones que podemos hacer son limitadas</li>';
       $output .= '</ul></li></ul>';
@@ -23,7 +22,6 @@ function crud_user_entity_help($route_name, \Drupal\Core\Routing\RouteMatchInter
       $output .= '<li type="circle">El almacen es un objeto que implementa EntityStorageInterface, añadiendo metodos para realizar operaciones CRUD sobre entidades</li>';
       $output .= '<li type="circle">Tanto la entidad User como el almacén existe el método save() o create() que funcionan exactamente igual</li>';
       $output .= '</ul></li></ul>';
-
 
       return $output;
   }
