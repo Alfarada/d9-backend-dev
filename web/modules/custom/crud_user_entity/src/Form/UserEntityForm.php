@@ -35,6 +35,7 @@ class UserEntityForm extends FormBase {
 
     $form['pass'] = [
       '#type' => 'password_confirm',
+      '#required' => TRUE,
     ];
 
     $form['mail'] = [
