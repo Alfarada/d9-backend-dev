@@ -8,11 +8,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class UserEntityForm extends FormBase {
-
   public function __construct(
     protected ?EntityTypeManagerInterface $entity_type
-  ) { }
-
+  ) {}
   public static function create(ContainerInterface $container): self {
     return new static(
       $container->get('entity_type.manager')
@@ -23,14 +21,11 @@ class UserEntityForm extends FormBase {
   }
 
   public function buildForm(array $form, FormStateInterface $form_state): array {
-//    $users = $this->entity_type->getStorage('user');
-//    $users_collection = $users->loadMultiple(NULL);
-
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Name'),
       '#required' => TRUE,
-      '#size' => 35
+      '#size' => 35,
     ];
 
     $form['pass'] = [
@@ -42,7 +37,7 @@ class UserEntityForm extends FormBase {
       '#type' => 'email',
       '#title' => $this->t('User email'),
       '#required' => TRUE,
-      '#size' => 35
+      '#size' => 35,
     ];
 
     $form['actions'] = [
@@ -52,11 +47,10 @@ class UserEntityForm extends FormBase {
     $form['actions']['submit'] = [
       '#type' => 'submit',
       '#attributes' => [
-        'class' => ['button--primary']
+        'class' => ['button--primary'],
       ],
       '#value' => $this->t('Save'),
     ];
-
 
     return $form;
   }
@@ -75,7 +69,7 @@ class UserEntityForm extends FormBase {
     $new_user = $user_storage->create([
       'name' => $name,
       'pass' => $pass,
-      'mail' => $mail
+      'mail' => $mail,
     ]);
     // save in storage
     $new_user->save();

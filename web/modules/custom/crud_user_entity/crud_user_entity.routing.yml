@@ -15,7 +15,7 @@ crud_user_entity.view:
     _access: 'TRUE'
 
 crud_user_entity.edit:
-  path: '/admin/crud-user-entity/edit'
+  path: '/admin/crud-user-entity/edit/{user}'
   defaults:
     _form: '\Drupal\crud_user_entity\Form\UserEntityEditForm'
     _title: 'Edit User'

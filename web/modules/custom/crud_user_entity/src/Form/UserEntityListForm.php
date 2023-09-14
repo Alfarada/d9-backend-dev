@@ -33,6 +33,12 @@ class UserEntityListForm extends FormBase {
     $user_collection = $user_storage->loadMultiple(NULL);
 
     foreach ($user_collection as $key => $user) {
+
+      // does not show the administrator in the list
+      if ($user->getDisplayName() === 'admin') {
+        continue;
+      }
+
       $row[$key]['id'] = $user->id();
       $row[$key]['name'] = $user->getDisplayName();
       $row[$key]['mail'] = $user->getEmail();
@@ -49,7 +55,7 @@ class UserEntityListForm extends FormBase {
           ],
           'edit_form' => [
             'title' => $this->t('edit'),
-            'url' => Url::fromRoute('crud_user_entity.edit'),
+            'url' => Url::fromRoute('crud_user_entity.edit', ['user' => $user->id()]),
           ],
           'delete_form' => [
             'title' => $this->t('delete'),
@@ -77,7 +83,6 @@ class UserEntityListForm extends FormBase {
     return $form;
   }
 
-  public function submitForm(array &$form, FormStateInterface $form_state): void {
-  }
+  public function submitForm(array &$form, FormStateInterface $form_state): void { }
 }
 
