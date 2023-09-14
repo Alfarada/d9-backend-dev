@@ -23,7 +23,7 @@ crud_user_entity.edit:
     _access: 'TRUE'
 
 crud_user_entity.delete:
-  path: '/admin/crud-user-entity/delete'
+  path: '/admin/crud-user-entity/{user}/delete'
   defaults:
     _form: '\Drupal\crud_user_entity\Form\UserEntityDeleteForm'
     _title: 'Delete User'

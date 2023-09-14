@@ -11,8 +11,7 @@ use Drupal\Core\Form\{ConfirmFormBase, FormStateInterface};
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ConfirmFormExample extends ConfirmFormBase {
-
-  protected Node|NULL $node;
+  protected ?Node $node;
 
   public function __construct(
     protected ?Connection $database,

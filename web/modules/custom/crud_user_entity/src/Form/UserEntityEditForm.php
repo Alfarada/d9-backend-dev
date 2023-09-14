@@ -2,9 +2,8 @@
 
 namespace Drupal\crud_user_entity\Form;
 
-use Drupal\Core\Form\FormBase;
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Form\{FormBase, FormStateInterface};
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\{EntityTypeManagerInterface, EntityInterface};
 
@@ -72,7 +71,6 @@ class UserEntityEditForm extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-
     // set user properties
     $this->user->set('name', $form_state->getValue('name'));
     $this->user->set('mail', $form_state->getValue('mail'));

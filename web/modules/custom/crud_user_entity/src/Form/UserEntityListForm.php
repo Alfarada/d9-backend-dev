@@ -59,7 +59,7 @@ class UserEntityListForm extends FormBase {
           ],
           'delete_form' => [
             'title' => $this->t('delete'),
-            'url' => Url::fromRoute('crud_user_entity.delete'),
+            'url' => Url::fromRoute('crud_user_entity.delete', ['user' => $user->id()]),
           ],
         ],
       ];
