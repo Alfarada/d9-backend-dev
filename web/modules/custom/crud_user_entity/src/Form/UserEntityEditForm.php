@@ -2,6 +2,7 @@
 
 namespace Drupal\crud_user_entity\Form;
 
+use Drupal\user\UserInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Form\{FormBase, FormStateInterface};
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,12 +26,8 @@ class UserEntityEditForm extends FormBase {
     return 'crud_user_entity_edit_form_id';
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state): array|MessengerInterface {
-    $user_id = $this->getRouteMatch()->getParameter('user');
-    $user_storage = $this->entity_type->getStorage('user');
-    $this->user = $user_storage->load($user_id);
-
-    if (!$this->user) {
+  public function buildForm(array $form, FormStateInterface $form_state, UserInterface $user = NULL): array|MessengerInterface {
+    if (!($this->user = $user)) {
       return \Drupal::messenger()->addError('User could not be loaded');
     }
 
