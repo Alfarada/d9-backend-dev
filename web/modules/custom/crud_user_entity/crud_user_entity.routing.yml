@@ -36,4 +36,4 @@ crud_user_entity.list:
     _form: '\Drupal\crud_user_entity\Form\UserEntityListForm'
     _title: 'User list'
   requirements:
-    _access: 'TRUE'
+    _permission: 'access user entity list'
