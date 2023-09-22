@@ -2,6 +2,9 @@ access user entity list:
   title: 'Administer entity users'
   description: 'This permission allows you to view the list of users on the system.'
 
+access view user entity:
+  title: 'View a User Entity Details'
+
 access create user entity:
   title: 'Create a User Entity'
 

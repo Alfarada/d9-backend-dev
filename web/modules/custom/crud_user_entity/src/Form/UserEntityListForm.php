@@ -67,30 +67,48 @@ class UserEntityListForm extends FormBase {
       ];
 
       $create_user_url->setOptions($url_options);
-      $create_user_link = Link::fromTextAndUrl(t('+ Create a User'), $create_user_url);
+      $create_user_link = Link::fromTextAndUrl($this->t('+ Create a User'), $create_user_url);
       $form['button'] = [
         '#markup' => $create_user_link->toString()
       ];
     }
 
-    if ($user_current->hasRole('content_editor') || $user_current->hasRole('manager')) {
+    if ($user_current->hasRole('content_editor')) {
       // remove the "actions" field from the table header
       array_pop($this->header);
 
+      foreach ($user_collection as $key => $user) {
+        if ($user->getDisplayName() === 'admin') {
+          continue;
+        }
+        $row[$key] = $this->getDefaultFields($user);
+      }
+    } elseif ($user_current->hasRole('manager')) {
       foreach ($user_collection as $key => $user) {
         // does not show the administrator in the list
         if ($user->getDisplayName() === 'admin') {
           continue;
         }
         $row[$key] = $this->getDefaultFields($user);
+
+        $dropbutton = [
+          '#type' => 'dropbutton',
+          '#dropbutton_type' => 'small',
+          '#links' => [
+            'view_controller' => [
+              'title' => $this->t('view'),
+              'url' => Url::fromRoute('crud_user_entity.view', ['user' => $user->id()]),
+            ],
+          ],
+        ];
+
+        $row[$key]['dropbutton'] = $this->renderer->render($dropbutton);
       }
     } elseif ($user_current->hasRole('administrator')) {
       foreach ($user_collection as $key => $user) {
-        // does not show the administrator in the list
         if ($user->getDisplayName() === 'admin') {
           continue;
         }
-
         $row[$key] = $this->getDefaultFields($user);
 
         $dropbutton = [
