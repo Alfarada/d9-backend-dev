@@ -4,7 +4,7 @@ crud_user_entity.create:
     _form: '\Drupal\crud_user_entity\Form\UserEntityForm'
     _title: 'User create'
   requirements:
-    _access: 'TRUE'
+    _permission: 'access create user entity'
 
 crud_user_entity.view:
   path: '/admin/crud-user-entity/view-details/{user}'
@@ -20,15 +20,15 @@ crud_user_entity.edit:
     _form: '\Drupal\crud_user_entity\Form\UserEntityEditForm'
     _title: 'Edit User'
   requirements:
-    _access: 'TRUE'
+    _permission: 'access edit user entity'
 
 crud_user_entity.delete:
-  path: '/admin/crud-user-entity/{user}/delete'
+  path: '/admin/crud-user-entity/delete/{user}'
   defaults:
     _form: '\Drupal\crud_user_entity\Form\UserEntityDeleteForm'
     _title: 'Delete User'
   requirements:
-    _access: 'TRUE'
+    _permission: 'access delete user entity'
 
 crud_user_entity.list:
   path: '/admin/crud-user-entity/list'

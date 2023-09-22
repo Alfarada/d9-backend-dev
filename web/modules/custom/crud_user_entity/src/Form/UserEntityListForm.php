@@ -2,6 +2,7 @@
 
 namespace Drupal\crud_user_entity\Form;
 
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Session\AccountProxyInterface;
@@ -48,11 +49,29 @@ class UserEntityListForm extends FormBase {
     ];
   }
   public function buildForm(array $form, FormStateInterface $form_state): array {
+
+
     $row = [];
     $user_storage = $this->entity_type->getStorage('user');
     $user_collection = $user_storage->loadMultiple(NULL);
     // gets the current user to check their roles
     $user_current = $user_storage->load($this->current_user->id());
+
+    // create user button
+    if ($user_current->hasRole('manager')) {
+      $create_user_url = Url::fromRoute('crud_user_entity.create');
+      $url_options = [
+        'attributes' => [
+          'class' => ['button', 'button--primary'],
+        ],
+      ];
+
+      $create_user_url->setOptions($url_options);
+      $create_user_link = Link::fromTextAndUrl(t('+ Create a User'), $create_user_url);
+      $form['button'] = [
+        '#markup' => $create_user_link->toString()
+      ];
+    }
 
     if ($user_current->hasRole('content_editor') || $user_current->hasRole('manager')) {
       // remove the "actions" field from the table header

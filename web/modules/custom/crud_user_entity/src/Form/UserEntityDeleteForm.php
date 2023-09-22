@@ -50,4 +50,5 @@ class UserEntityDeleteForm extends ConfirmFormBase {
     $this->messenger()->addStatus($this->t('User successfully deleted'));
     $form_state->setRedirect('crud_user_entity.list');
   }
+
 }
