@@ -1,0 +1,14 @@
+crud_user_entity.view_tab:
+  title: View
+  route_name: crud_user_entity.view
+  base_route: crud_user_entity.view
+
+crud_user_entity.edit_tab:
+  title: Edit
+  route_name: crud_user_entity.edit
+  base_route: crud_user_entity.view
+
+crud_user_entity.delete_tab:
+  title: Delete
+  route_name: crud_user_entity.delete
+  base_route: crud_user_entity.view

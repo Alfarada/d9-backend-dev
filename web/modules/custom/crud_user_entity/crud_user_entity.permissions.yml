@@ -1,0 +1,12 @@
+access user entity list:
+  title: 'Administer entity users'
+  description: 'This permission allows you to view the list of users on the system.'
+
+access create user entity:
+  title: 'Create a User Entity'
+
+access edit user entity:
+  title: 'Edit a User Entity'
+
+access delete user entity:
+  title: 'Delete a User Entity'
