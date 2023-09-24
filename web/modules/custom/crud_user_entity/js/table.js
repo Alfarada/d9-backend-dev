@@ -1,7 +1,7 @@
 (function ($) {
   // convert from unix date to human-readable date
   $(() => {
-    // format the selector collection
+    // applies formatting to selectors defined in the array
     $.each(['.created', '.changed'], (i, val) => {
       const dateElement = $(val),
         dateUnix = parseInt(dateElement.text()),
