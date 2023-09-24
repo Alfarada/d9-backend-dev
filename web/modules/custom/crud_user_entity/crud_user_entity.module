@@ -60,3 +60,14 @@ function crud_user_entity_user_create(EntityInterface $entity): void {
       ['@label' => $entity->label()]
     );
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete()
+ */
+
+function crud_user_entity_user_predelete(EntityInterface $entity): void {
+  Drupal::logger('crud_user_entity')
+    ->info('The user: " @label " has been removed from the system',
+      ['@label' => $entity->label()]
+    );
+}
