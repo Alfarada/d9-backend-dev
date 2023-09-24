@@ -1,25 +1,29 @@
 <?php
 
-function crud_user_entity_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match): string {
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+function crud_user_entity_help($route_name, RouteMatchInterface $route_match): string {
   $output = '';
   if ($route_name === 'crud_user_entity.create') {
-      $output .= '<ul class="list-items"><li>Servicio : <b>current_user </b>';
-      $output .= '<ul class="type-circle"><li>No es la entidad User en si</li>';
-      $output .= '<li>Permite consultar informacion relacionada con el usuario actual, pero no modificarla</li>';
-      $output .= '<li>Las operaciones que podemos hacer son limitadas</li>';
-      $output .= '</ul></li></ul>';
+    $output .= '<ul class="list-items"><li>Servicio : <b>current_user </b>';
+    $output .= '<ul class="type-circle"><li>No es la entidad User en si</li>';
+    $output .= '<li>Permite consultar informacion relacionada con el usuario actual, pero no modificarla</li>';
+    $output .= '<li>Las operaciones que podemos hacer son limitadas</li>';
+    $output .= '</ul></li></ul>';
 
-      $output .= '<ul class="list-items"><li>Clase <b>User </b>';
-      $output .= '<ul class="type-circle"><li>Esta clase nos permite obtener y establecer valores de campos</li>';
-      $output .= '<li>Podemos cargar el usuario con el metodo load() y manipular sus propiedades</li>';
-      $output .= '</ul></li></ul>';
+    $output .= '<ul class="list-items"><li>Clase <b>User </b>';
+    $output .= '<ul class="type-circle"><li>Esta clase nos permite obtener y establecer valores de campos</li>';
+    $output .= '<li>Podemos cargar el usuario con el metodo load() y manipular sus propiedades</li>';
+    $output .= '</ul></li></ul>';
 
-      $output .= '<ul class="list-items"><li><b>Entity API </b>';
-      $output .= '<ul class="type-circle"> <li> El servicio entity_type.manager nos permite gestionar cualquier tipo de entidad</li>';
-      $output .= '<li>Fundamental para cargar cualquier tipo de entidad </li>';
-      $output .= '<li>El almacen es un objeto que implementa EntityStorageInterface, añadiendo metodos para realizar operaciones CRUD sobre entidades</li>';
-      $output .= '<li>Tanto la entidad User como el almacén existe el método save() o create() que funcionan exactamente igual</li>';
-      $output .= '</ul></li></ul>';
+    $output .= '<ul class="list-items"><li><b>Entity API </b>';
+    $output .= '<ul class="type-circle"> <li> El servicio entity_type.manager nos permite gestionar cualquier tipo de entidad</li>';
+    $output .= '<li>Fundamental para cargar cualquier tipo de entidad </li>';
+    $output .= '<li>El almacen es un objeto que implementa EntityStorageInterface, añadiendo metodos para realizar operaciones CRUD sobre entidades</li>';
+    $output .= '<li>Tanto la entidad User como el almacén existe el método save() o create() que funcionan exactamente igual</li>';
+    $output .= '</ul></li></ul>';
   }
 
   return $output;
@@ -28,7 +32,7 @@ function crud_user_entity_help($route_name, \Drupal\Core\Routing\RouteMatchInter
 /**
  * Implements hook_form_FORM_ID_alter() for crud_user_entity_list_form_id.
  */
-function crud_user_entity_form_crud_user_entity_list_form_id_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void {
+function crud_user_entity_form_crud_user_entity_list_form_id_alter(&$form, FormStateInterface $form_state, $form_id): void {
   foreach ($form['users']['#rows'] as $key => $user) {
     $form['users']['#rows'][$key]['created'] = date('Y-m-d H:i', $user['created']);
     $form['users']['#rows'][$key]['changed'] = date('Y-m-d H:i', $user['changed']);
@@ -41,7 +45,18 @@ function crud_user_entity_theme($existing, $type, $theme, $path): array {
       'variables' => [
         'user' => NULL,
       ],
-      'template' => 'view-user-entity'
-    ]
+      'template' => 'view-user-entity',
+    ],
   ];
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create()
+ */
+
+function crud_user_entity_user_create(EntityInterface $entity): void {
+  Drupal::logger('crud_user_entity')
+    ->info('User created: @label',
+      ['@label' => $entity->label()]
+    );
 }
