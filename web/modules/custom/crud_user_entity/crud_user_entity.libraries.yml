@@ -1,0 +1,6 @@
+js_table:
+  js:
+    js/table.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
