@@ -3,22 +3,22 @@
 function crud_user_entity_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
   if ($route_name === 'crud_user_entity.create') {
       $output = '';
-      $output .= '<ul><li>Servicio : <b>current_user </b>';
-      $output .= '<ul><li type="circle">No es la entidad User en si</li>';
-      $output .= '<li type="circle">Permite consultar informacion relacionada con el usuario actual, pero no modificarla</li>';
-      $output .= '<li type="circle">Las operaciones que podemos hacer son limitadas</li>';
+      $output .= '<ul class="list-items"><li>Servicio : <b>current_user </b>';
+      $output .= '<ul class="type-circle"><li>No es la entidad User en si</li>';
+      $output .= '<li>Permite consultar informacion relacionada con el usuario actual, pero no modificarla</li>';
+      $output .= '<li>Las operaciones que podemos hacer son limitadas</li>';
       $output .= '</ul></li></ul>';
 
-      $output .= '<ul><li>Clase <b>User </b>';
-      $output .= '<ul><li type="circle">Esta clase nos permite obtener y establecer valores de campos</li>';
-      $output .= '<li type="circle">Podemos cargar el usuario con el metodo load() y manipular sus propiedades</li>';
+      $output .= '<ul class="list-items"><li>Clase <b>User </b>';
+      $output .= '<ul class="type-circle"><li>Esta clase nos permite obtener y establecer valores de campos</li>';
+      $output .= '<li>Podemos cargar el usuario con el metodo load() y manipular sus propiedades</li>';
       $output .= '</ul></li></ul>';
 
-      $output .= '<ul><li><b>Entity API </b>';
-      $output .= '<ul><li type="circle"> El servicio entity_type.manager nos permite gestionar cualquier tipo de entidad</li>';
-      $output .= '<li type="circle">Fundamental para cargar cualquier tipo de entidad </li>';
-      $output .= '<li type="circle">El almacen es un objeto que implementa EntityStorageInterface, añadiendo metodos para realizar operaciones CRUD sobre entidades</li>';
-      $output .= '<li type="circle">Tanto la entidad User como el almacén existe el método save() o create() que funcionan exactamente igual</li>';
+      $output .= '<ul class="list-items"><li><b>Entity API </b>';
+      $output .= '<ul class="type-circle"> <li> El servicio entity_type.manager nos permite gestionar cualquier tipo de entidad</li>';
+      $output .= '<li>Fundamental para cargar cualquier tipo de entidad </li>';
+      $output .= '<li>El almacen es un objeto que implementa EntityStorageInterface, añadiendo metodos para realizar operaciones CRUD sobre entidades</li>';
+      $output .= '<li>Tanto la entidad User como el almacén existe el método save() o create() que funcionan exactamente igual</li>';
       $output .= '</ul></li></ul>';
 
       return $output;
@@ -34,6 +34,13 @@ function crud_user_entity_form_crud_user_entity_list_form_id_alter(&$form, \Drup
     $form['users']['#rows'][$key]['changed'] = date('Y-m-d H:i', $user['changed']);
   }
 }
+
+///**
+// * Implements hook_form_FORM_ID_alter() for crud_user_entity_form_id.
+// */
+//function crud_user_entity_form_crud_user_entity_form_id_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id): void {
+//
+//}
 
 function crud_user_entity_theme($existing, $type, $theme, $path): array {
   return [

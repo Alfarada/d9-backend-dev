@@ -3,8 +3,7 @@
 namespace Drupal\crud_user_entity\Form;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Form\FormBase;
-use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Form\{FormBase, FormStateInterface};
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class UserEntityForm extends FormBase {
@@ -51,6 +50,8 @@ class UserEntityForm extends FormBase {
       ],
       '#value' => $this->t('Save'),
     ];
+
+    $form['#attached']['library'][] = 'crud_user_entity/css_library';
 
     return $form;
   }

@@ -1,6 +1,11 @@
-js_table:
+js_tools:
   js:
     js/table.js: {}
   dependencies:
     - core/jquery
     - core/drupalSettings
+
+css_library:
+  css:
+    theme:
+      css/style.css: {}

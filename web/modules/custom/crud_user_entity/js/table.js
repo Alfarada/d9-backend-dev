@@ -1,6 +1,5 @@
 (function ($) {
-
-  // convert from unix date to human readable date
+  // convert from unix date to human-readable date
   $(() => {
     // format the selector collection
     $.each(['.created', '.changed'], (i, val) => {

@@ -20,7 +20,7 @@ class UserEntityViewController extends ControllerBase {
     $output['user_details'] = [
       '#theme' => 'view_user_entity',
       '#attached' => [
-        'library' => ['crud_user_entity/js_table']
+        'library' => ['crud_user_entity/js_tools']
       ],
       '#user' => $user_properties,
       '#title' => $this->t('Details ') . $user->label(),
