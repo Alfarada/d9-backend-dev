@@ -4,88 +4,87 @@
  *  Implements hook_schema().
  */
 
-function forcontu_forms_schema()
-{
-    $schema['forcontu_forms_simple'] = [
-        'description' => 'Stores Simple form data',
-        'fields' => [
-            'id' => [
-                'type' => 'serial',
-                'not null' => TRUE,
-                'description' => "ID autoincrement"
-            ],
-            'title' => [
-                'type' => 'varchar',
-                'length' => 255,
-                'not null' => TRUE,
-                'default' => '',
-                'description' => 'title'
-            ],
-            'color' => [
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'size' => 'tiny',
-                'description' => 'color code'
-            ],
-            'username' => [
-                'type' => 'varchar',
-                'length' => 255,
-                'not null' => TRUE,
-                'default' => '',
-                'description' => 'User name'
-            ],
-            'email' => [
-                'type' => 'varchar',
-                'length' => 255,
-                'not null' => TRUE,
-                'default' => '',
-                'description' => 'User Email'
-            ],
-            'uid' => [
-                'type' => 'int',
-                'unsigned' => TRUE,
-                'not null' => TRUE,
-                'default' => 0,
-                'description' => 'The uid of the who submited the form.'
-            ],
-            'ip' => [
-                'type' => 'varchar',
-                'length' => 128,
-                'not null' => TRUE,
-                'default' => '',
-                'description' => 'User IP'
-            ],
-            'timestamp' => [
-                'type' => 'int',
-                'not null' => TRUE,
-                'detfault' => 0,
-                'description' => 'Unix timestamp indicating when the form was submitted'
-            ],
-        ],
-        'primary key' => ['id']
-    ];
+function forcontu_forms_schema() {
+  $schema['forcontu_forms_simple'] = [
+    'description' => 'Stores Simple form data',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => "ID autoincrement",
+      ],
+      'title' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'title',
+      ],
+      'color' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'color code',
+      ],
+      'username' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'User name',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'User Email',
+      ],
+      'uid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The uid of the who submited the form.',
+      ],
+      'ip' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'User IP',
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'detfault' => 0,
+        'description' => 'Unix timestamp indicating when the form was submitted',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
 
-    $schema['forcontu_node_highlighted'] = [
-        'description' => 'Stores configuration form data',
-        'fields' => [
-            'nid' => [
-                'type' => 'int',
-                'not null' => TRUE,
-                'unsigned' => TRUE,
-                'default' => 0,
-                'description' => 'The nid of the who submited the form.'
-            ],
-            'highlighted' => [
-                'type' => 'int',
-                'not null' => TRUE,
-                'default' => 0,
-                'size' => 'tiny',
-                'description' => 'highlighted content'
-            ]
-        ],
-        'primary key' => ['nid']
-    ];
+  $schema['forcontu_node_highlighted'] = [
+    'description' => 'Stores configuration form data',
+    'fields' => [
+      'nid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => 'The nid of the who submited the form.',
+      ],
+      'highlighted' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'highlighted content',
+      ],
+    ],
+    'primary key' => ['nid'],
+  ];
 
-    return $schema;
+  return $schema;
 }

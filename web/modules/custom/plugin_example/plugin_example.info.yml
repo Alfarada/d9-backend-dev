@@ -1,5 +1,0 @@
-name: Plugin Examples
-type: module
-description: several examples of creating plugins
-package: Custom
-core_version_requirement: ^8 || ^9

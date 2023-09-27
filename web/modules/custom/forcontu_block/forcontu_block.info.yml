@@ -1,5 +1,0 @@
-name: Forcontu block
-type: module
-package: Custom
-description: Example Block Plugin
-core_version_requirement: ^8 || ^9
