@@ -1,0 +1,40 @@
+# pestañas locales o local tasks
+controller_routes_practices.tab1:
+  route_name: controller_routes_practices.tab1
+  base_route: controller_routes_practices.tab1
+  title: 'Tab 1'
+  weight: 0
+
+controller_routes_practices.tab2:
+  route_name: controller_routes_practices.tab2
+  base_route: controller_routes_practices.tab1
+  title: 'Tab 2'
+  weight: 1
+
+controller_routes_practices.tab3:
+  route_name: controller_routes_practices.tab3
+  base_route: controller_routes_practices.tab1
+  title: 'Tab 3'
+  weight: 2
+
+# sub pestañas locales
+
+controller_routes_practices.tab2a:
+  parent_id: controller_routes_practices.tab2
+  route_name: controller_routes_practices.tab2a
+  title: 'Tab 2a'
+  weight: 0
+
+controller_routes_practices.tab2b:
+  parent_id: controller_routes_practices.tab2
+  route_name: controller_routes_practices.tab2b
+  title: 'Tab 2b'
+  weight: 1
+
+# agregando local task a un grupo de tasks existente
+
+controller_routes_practices.extratab:
+  base_route: system.admin_content
+  route_name: controller_routes_practices.extratab
+  title: 'Extra tab'
+  weight: 11

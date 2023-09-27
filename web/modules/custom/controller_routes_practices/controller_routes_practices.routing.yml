@@ -1,0 +1,105 @@
+controller_routes_practices.simple:
+  path: '/admin/controller-and-routes/practices'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::simple'
+    _title: 'Example title for Controller'
+  requirements:
+    _permission: 'access content'
+
+controller_routes_practices.calculator:
+  path: '/admin/controller-and-routes/practices/calculator/{var1}/{var2}'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::calculator'
+    _title: 'Calculator example'
+    var1: 1
+    var2: 2
+  requirements:
+    _permission: 'access calculator'
+
+controller_routes_practices.user:
+  path: '/admin/controller-and-routes/practices/user/{user}'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::user'
+    _title: 'Pass a user by url'
+  requirements:
+    _permission: 'access content'
+
+controller_routes_practices.node:
+  path: '/admin/controller-and-routes/practices/node/{node}'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::node'
+    _title: 'Pass a node by url'
+  requirements:
+    _permission: 'access content'
+
+# Enlaces con Url y Link
+controller_routes_practices.url_link:
+  path: '/admin/url-link'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::urlLink'
+    _title: 'Uso de el objeto Link y Url'
+  requirements:
+    _permission: 'access content'
+
+# enlacee de menus
+controller_routes_practices.link_menu:
+  path: '/admin/link-menu'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Ejemplo de uso de los enlaces de menú'
+  requirements:
+    _permission: 'access content'
+
+# grupos de pestañas
+# tab 1
+controller_routes_practices.tab1:
+  path: '/admin/tabs/tab1'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::tab1'
+    _title: 'Local task 1'
+  requirements:
+    _permission: 'access content'
+
+# tab 2
+controller_routes_practices.tab2:
+  path: '/admin/tabs/tab2'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::tab2'
+    _title: 'Local task 2'
+  requirements:
+    _permission: 'access tab2 page'
+
+# sub tab2a
+controller_routes_practices.tab2a:
+  path: '/admin/tabs/subtab/tab2a'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::tab2a'
+    _title: 'Local task 2a'
+  requirements:
+    _permission: 'access content'
+
+controller_routes_practices.tab2b:
+  path: '/admin/tabs/subtab/tab2b'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::tab2b'
+    _title: 'Local task 2b'
+  requirements:
+    _permission: 'access content'
+
+# tab 3
+controller_routes_practices.tab3:
+  path: '/admin/tabs/tab3'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::tab3'
+    _title: 'Local task 3'
+  requirements:
+    _permission: 'access content'
+
+# extra tab ( extra local task )
+controller_routes_practices.extratab:
+  path: '/admin/tabs/extratab'
+  defaults:
+    _controller: 'Drupal\controller_routes_practices\Controller\ControllerExample::extratab'
+    _title: 'Extra tab'
+  requirements:
+    _permission: 'access content'

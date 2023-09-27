@@ -1,0 +1,9 @@
+reports.customers_total_payments.tab2:
+  route_name: reports.customers_total_payments.tab2
+  title: 'Total Payments'
+  base_route: reports.customers.tab1
+
+reports.customers.tab1:
+  route_name: reports.customers.tab1
+  title: 'List'
+  base_route: reports.customers.tab1

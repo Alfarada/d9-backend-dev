@@ -47,21 +47,21 @@ class NodeVotingBlockBlock extends BlockBase implements ContainerFactoryPluginIn
    *   The plugin_id for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   * @param \Drupal\Core\Form\FormBuilderInterface|null $form_builder
    *   The form builder.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface|null $route_match
    *   The current route match.
    */
   public function __construct(array $configuration,
                               $plugin_id, $plugin_definition,
-                              FormBuilderInterface $form_builder,
-                              RouteMatchInterface $route_match) {
+                              ?FormBuilderInterface $form_builder,
+                              ?RouteMatchInterface $route_match) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->formBuilder = $form_builder;
     $this->routeMatch = $route_match;
   }
 
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
     return new static(
       $configuration,
       $plugin_id,
@@ -71,8 +71,7 @@ class NodeVotingBlockBlock extends BlockBase implements ContainerFactoryPluginIn
     );
   }
 
-  // Este metodo devuelve un objeto de tipo AccessResult
-  protected function blockAccess(AccountInterface $account) {
+  protected function blockAccess(AccountInterface $account): AccessResult {
 
     $node = $this->routeMatch->getParameter('node');
 
@@ -84,8 +83,7 @@ class NodeVotingBlockBlock extends BlockBase implements ContainerFactoryPluginIn
   }
 
   public function build() {
-    $form = $this->formBuilder->getForm('Drupal\forcontu_block\Form\NodeVotingForm');
-    return $form;
+    return $this->formBuilder->getForm('Drupal\forcontu_block\Form\NodeVotingForm');
   }
 
 }

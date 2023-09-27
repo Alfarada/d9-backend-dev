@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function crud_employees_schema(): array {
+  $schema['employees_data'] = [
+    'description' => 'Stores module data as key/value pairs per employees.',
+    'fields' => [
+      'id' => [
+        'description' => 'Empoyee id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'firstName' => [
+        'description' => 'The first name of the employee.',
+        'type' => 'varchar',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'lastName' => [
+        'description' => 'The last name of the employee.',
+        'type' => 'varchar',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'employeesEmail' => [
+        'description' => 'Employee Email.',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => '',
+        'not null' => TRUE,
+      ],
+      'officeCode' => [
+        'description' => 'Employee Office Code',
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'jobTitle' => [
+        'description' => 'Employee Job Tittle.',
+        'type' => 'varchar',
+        'length' => DRUPAL_EXTENSION_NAME_MAX_LENGTH,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}

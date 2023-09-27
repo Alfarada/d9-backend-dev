@@ -1,0 +1,8 @@
+_core:
+  default_config_hash: 2b4_6S8OHCjnyzeqP2ahZ2QXOHPjmuN4QgqtltcVfP0
+newsletter:
+  subject: 'Experto en Drupal 9.5 Site Building'
+  default_from_email: alfaradayepez@gmail.com
+  active: true
+  periodicity: weekly
+  news_number: 100

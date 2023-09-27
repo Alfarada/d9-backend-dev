@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function config_example_install() {
+  \Drupal::messenger()->addStatus(__FUNCTION__);
+
+  // loading properties via configuration object
+  $site_name = \Drupal::config('system.site')->get('name');
+  $site_mail = \Drupal::config('system.site')->get('mail');
+
+  // we use the configFactory service to modify the configuration file
+  \Drupal::configFactory()->getEditable('config_example.settings')
+    ->set('newsletter.subject', $site_name)
+    ->set('newsletter.default_from_email', $site_mail)
+    ->save();
+}

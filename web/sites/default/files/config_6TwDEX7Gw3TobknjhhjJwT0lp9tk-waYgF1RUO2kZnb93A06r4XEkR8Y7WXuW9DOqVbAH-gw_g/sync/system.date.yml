@@ -1,0 +1,7 @@
+country:
+  default: EC
+timezone:
+  user:
+    configurable: true
+    default: 1
+    warn: true

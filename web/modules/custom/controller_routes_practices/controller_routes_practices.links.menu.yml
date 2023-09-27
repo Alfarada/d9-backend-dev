@@ -1,0 +1,52 @@
+# solo agregamos un enlace de menu al manejador
+
+#controller_routes_practices.link_menu:
+#  title: 'Enlace link menu'
+#  description: 'Enlace menu de ejemplo'
+#  menu_name: main
+#  route_name: controller_routes_practices.link_menu
+#  weight: -10
+
+# agregamos un enlace de menu a la barra de administracion principal
+controller_routes_practices.link_menu_admin:
+  title: 'Menu Link Admin'
+  description: 'Enlace menu de ejemplo en la barra de administrador'
+  parent: system.admin
+  route_name: controller_routes_practices.link_menu
+  weight: -11
+
+# agregamos el menu hijo
+
+controller_routes_practices.link_menu_admin_child:
+  title: 'Menu Link Admin Child'
+  description: 'Enlace menu admin hija'
+  parent: controller_routes_practices.link_menu_admin
+  route_name: controller_routes_practices.link_menu
+
+# elemento menu hijo con parametros
+
+controller_routes_practices.link_menu_admin_child_calculator:
+  title: 'Menu Link Admin Child Calculator'
+  description: 'Enlace menu admin hija calculadora'
+  parent: controller_routes_practices.link_menu_admin
+  route_name: controller_routes_practices.calculator
+  route_parameters:
+    var1: 3
+    var2: 3
+
+# registrar una pestaña como un enlace de menu
+
+controller_routes_practices.tabs:
+  title: 'Tabs'
+  description: 'Tabs'
+  parent: controller_routes_practices.link_menu_admin
+  route_name: controller_routes_practices.tab1
+  weight: 5
+
+# registrar pestaña extra tab como enlace de menu
+controller_routes_practices.extratab:
+  title: 'Extra Tab'
+  description: ' Extra Tab'
+  parent: controller_routes_practices.link_menu_admin
+  route_name: controller_routes_practices.extratab
+  weight: 5

@@ -1,0 +1,8 @@
+controller_routes_practices.link_action_1:
+  route_name: controller_routes_practices.calculator
+  options:
+    attributes: {target: _blank}
+  title: Go to calculator page
+  weight: 10
+  appears_on:
+    - controller_routes_practices.tab1

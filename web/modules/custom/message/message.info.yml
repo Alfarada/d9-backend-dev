@@ -1,0 +1,6 @@
+name: Message
+type: module
+description: test a create entity with bundles with drush generate
+package: Custom Entities
+core: 8.x
+core_version_requirement: ^8 || ^9

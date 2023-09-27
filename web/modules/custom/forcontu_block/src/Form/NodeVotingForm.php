@@ -18,13 +18,13 @@ class NodeVotingForm extends FormBase {
   protected $currentUser;
   protected $currentRouteMatch;
 
-  public function __construct(Connection $database, AccountInterface $currentUser, RouteMatchInterface $currentRouteMatch) {
+  public function __construct(?Connection $database, ?AccountInterface $currentUser, ?RouteMatchInterface $currentRouteMatch) {
      $this->database = $database;
      $this->currentUser = $currentUser;
      $this->currentRouteMatch = $currentRouteMatch;
   }
 
-  public static function create(ContainerInterface $container) {
+  public static function create(ContainerInterface $container): self {
 
     return new static(
       $container->get('database'),
@@ -83,8 +83,8 @@ class NodeVotingForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
-    return parent::validateForm($form, $form_state);
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
+    parent::validateForm($form, $form_state);
   }
 
   /**

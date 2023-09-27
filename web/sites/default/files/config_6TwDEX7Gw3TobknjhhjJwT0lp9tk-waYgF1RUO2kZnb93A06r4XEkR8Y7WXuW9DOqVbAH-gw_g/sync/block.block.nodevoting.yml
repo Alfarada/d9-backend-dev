@@ -1,0 +1,20 @@
+uuid: 7fbf067b-581f-4ff1-b23b-e37a5b5423d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - plugin_example
+  theme:
+    - olivero
+id: nodevoting
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: plugin_example_node_voting_block
+settings:
+  id: plugin_example_node_voting_block
+  label: 'Node Voting test'
+  label_display: visible
+  provider: plugin_example
+visibility: {  }

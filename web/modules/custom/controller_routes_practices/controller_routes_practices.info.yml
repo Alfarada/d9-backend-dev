@@ -1,0 +1,6 @@
+name: Controller Routes Practices
+type: module
+package: Custom
+description:  'Controller and Routes Examples'
+core_version_requirement: ^9
+

@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: 5b29f829-f4aa-4598-99d5-b6e79f41bc85
+name: 'Experto en Drupal 9.5 Site Building'
+mail: alfaradayepez@gmail.com
+slogan: 'Senior Back-end'
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
