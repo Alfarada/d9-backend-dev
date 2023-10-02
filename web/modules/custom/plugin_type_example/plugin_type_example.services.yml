@@ -1,0 +1,4 @@
+services:
+  plugin.manager.fipsum:
+    class: Drupal\plugin_type_example\FipsumPluginManager
+    parent: default_plugin_manager

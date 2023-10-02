@@ -1,0 +1,5 @@
+name: Development tools
+type: module
+description: This module provides functionalities to improve and speed up development
+package: Tools
+core_version_requirement: ^8 || ^9

@@ -1,0 +1,7 @@
+plugin_type_example.fipsum:
+  path: '/plugin-type/plugins/fipsum'
+  defaults:
+    _controller: '\Drupal\plugin_type_example\Controller\PluginTypeController::fipsum'
+    _title: 'Fipsum Test Page'
+  requirements:
+    _permission: 'access content'

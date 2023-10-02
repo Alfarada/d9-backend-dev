@@ -2,6 +2,7 @@
 
 namespace Drupal\reports\Controller;
 
+use Drupal\development_tools\Services\Tools;
 use Drupal\Core\{Url, Link};
 use Drupal\Core\Database\Database;
 use Drupal\Core\Controller\ControllerBase;
@@ -10,11 +11,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class ReportsController extends ControllerBase {
 
-  public function __construct(protected ?RouteMatchInterface $route_match) {}
+  public function __construct(
+    protected ?RouteMatchInterface $route_match,
+    protected Tools $tools
+  ) {}
 
   public static function create(ContainerInterface $container): ReportsController {
     return new static(
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('development_tools')
     );
   }
 
@@ -47,7 +52,7 @@ class ReportsController extends ControllerBase {
 
     $table['customers'] = [
       '#type' => 'table',
-      '#header' => $this->arrayValueFormatterUcFirst($fields),
+      '#header' => $this->tools->arrayUcFirst($fields),
       '#rows' => $rows,
     ];
 
@@ -68,7 +73,7 @@ class ReportsController extends ControllerBase {
     // customer properties list
     $list_properties = [];
     foreach ($customer as $property => $value) {
-      $property = $this->camelCaseToUcFirst($property);
+      $property = $this->tools->toUcFirst($property);
       $list_properties[] = $this->t("<strong>$property</strong>: $value");
     }
 
@@ -80,22 +85,6 @@ class ReportsController extends ControllerBase {
 
     return $output;
   }
-
-  public function camelCaseToUcFirst(string $string): string {
-    //validation
-    $outputString = preg_replace('/([a-z])([A-Z])/', '$1 $2', $string);
-    return ucfirst($outputString);
-  }
-
-  public function arrayValueFormatterUcFirst(array $array): array {
-    //validation
-    $array_formatted = [];
-    foreach ($array as $value) {
-      $array_formatted[] = ucfirst(preg_replace('/([a-z])([A-Z])/', '$1 $2', $value));
-    }
-    return $array_formatted;
-  }
-
   public function getTotalPayments(): array {
 
     $database = Database::getConnection('default', 'db_test');
@@ -104,7 +93,7 @@ class ReportsController extends ControllerBase {
       ->fields('c', ['customerNumber', 'customerName'])
       ->execute()
       ->fetchAll();
-    $customers = $this->reorder($customers);
+    $customers = $this->tools->sortById($customers);
 
     $times_paid = $database->select('payments', 'p');
     $times_paid->fields('p', ['customerNumber']);
@@ -112,14 +101,14 @@ class ReportsController extends ControllerBase {
     $times_paid->groupBy('customerNumber');
     $times_paid->having('COUNT(customerNumber) >= 1 ');
     $times_paid = $times_paid->execute()->fetchAll();
-    $times_paid = $this->reorder($times_paid);
+    $times_paid = $this->tools->sortById($times_paid);
 
     $total_amount = $database->select('payments', 'p');
     $total_amount->fields('p', ['customerNumber']);
     $total_amount->addExpression('SUM(amount)', 'total_amount');
     $total_amount->groupBy('customerNumber');
     $total_amount = $total_amount->execute()->fetchAll();
-    $total_amount = $this->reorder($total_amount);
+    $total_amount = $this->tools->sortById($total_amount);
 
     $data = [];
     foreach ($customers as $customer) {
@@ -143,14 +132,5 @@ class ReportsController extends ControllerBase {
       '#rows' => $data,
     ];
     return $table;
-  }
-
-  public function reorder(array $data): array {
-    $new_data = [];
-    foreach ($data as $value) {
-      $new_data[$value->customerNumber] = (array) $value;
-    }
-
-    return $new_data;
   }
 }

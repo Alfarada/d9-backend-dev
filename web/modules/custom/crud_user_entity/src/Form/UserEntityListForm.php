@@ -50,7 +50,6 @@ class UserEntityListForm extends FormBase {
   }
   public function buildForm(array $form, FormStateInterface $form_state): array {
 
-
     $row = [];
     $user_storage = $this->entity_type->getStorage('user');
     $user_collection = $user_storage->loadMultiple(NULL);

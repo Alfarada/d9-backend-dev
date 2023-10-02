@@ -9,9 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\{EntityTypeManagerInterface, EntityInterface};
 
 class UserEntityEditForm extends FormBase {
-
   private ?EntityInterface $user;
-
   public function __construct(
     protected ?EntityTypeManagerInterface $entity_type
   ) {}

@@ -1,0 +1,3 @@
+services:
+  development_tools:
+    class: Drupal\development_tools\Services\Tools
