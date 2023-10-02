@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - plugin_block
+  theme:
+    - olivero
+id: block_plugin_simple
+theme: olivero
+region: sidebar
+weight: 0
+provider: null
+plugin: block_plugin_simple
+settings:
+    id: block_plugin_simple
+    label: 'Block Simple Example'
+    provider: plugin_block
+    label_display: visible
+visibility: { }
