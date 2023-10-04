@@ -1,7 +1,0 @@
-# Section menu items definition
-entity.section_entity.collection:
-  title: 'Section'
-  route_name: entity.section_entity.collection
-  description: 'List Section (bundles)'
-  parent: system.admin_structure
-  weight: 99
