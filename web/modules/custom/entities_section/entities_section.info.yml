@@ -1,0 +1,5 @@
+name: Entities section example
+type: module
+description: Create sections on the site (News, Blog, etc.)
+package: Custom
+core_version_requirement: ^8 || ^9

@@ -1,0 +1,31 @@
+entity.entities_section.collection:
+  path: '/admin/structure/entities_section'
+  defaults:
+    _entity_list: 'entities_section'
+    _title: 'Sections configuration'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.entities_section.add_form:
+  path: '/admin/structure/entities_section/add'
+  defaults:
+    _entity_form: 'entities_section.add'
+    _title: 'Add section'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.entities_section.edit_form:
+  path: '/admin/structure/entities_section/{entities_section}'
+  defaults:
+    _entity_form: 'entities_section.edit'
+    _title: 'Edit section'
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.entities_section.delete_form:
+  path: '/admin/structure/entities_section/{entities_section}/delete'
+  defaults:
+    _entity_form: 'entities_section.delete'
+    _title: 'Delete section'
+  requirements:
+    _permission: 'administer site configuration'
