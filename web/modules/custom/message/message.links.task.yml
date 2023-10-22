@@ -1,0 +1,16 @@
+message_entity_task_view:
+  route_name: entity.message.canonical
+  base_route: entity.message.canonical
+  title: 'View'
+
+message_entity_task_edit:
+  route_name: entity.message.edit_form
+  base_route: entity.message.canonical
+  title: 'Edit'
+
+message_entity_task_delete:
+  route_name:  entity.message.delete_form
+  base_route:  entity.message.canonical
+  title: Delete
+  weight: 10
+
