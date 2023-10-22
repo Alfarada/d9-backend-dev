@@ -3,6 +3,7 @@
 namespace Drupal\practical\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
+use Drupal\Core\Entity\Annotation\ConfigEntityType;
 
 /**
  * Defines the Practical Type entity. A configuration entity used to manage

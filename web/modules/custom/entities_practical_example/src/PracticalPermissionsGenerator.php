@@ -17,7 +17,7 @@ class PracticalPermissionsGenerator {
    *
    * @return array
    */
-  public function practicalTypePermissions() {
+  public function practicalTypePermissions(): array {
     $perms = [];
     foreach (PracticalTypeEntity::loadMultiple() as $entity_type) {
       $perms += $this->buildPermissions($entity_type);
@@ -32,7 +32,7 @@ class PracticalPermissionsGenerator {
    *
    * @return array
    */
-  protected function buildPermissions(PracticalTypeEntity $entity_type) {
+  protected function buildPermissions(PracticalTypeEntity $entity_type): array {
     $type_id = $entity_type->id();
     $bundle_of = $entity_type->getEntityType()->getBundleOf();
     $type_params = [

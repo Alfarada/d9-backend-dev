@@ -5,7 +5,7 @@ practical_entity_collection_menu:
   parent: system.admin_content
 
 practical_type_entity_collection_menu:
-  title: 'PracticalEntity Types'
+  title: 'Practical Entity Types'
   route_name: entity.practical_type.collection
   description: 'List of Practical entity types (bundles)'
   parent: system.admin_structure

@@ -49,7 +49,7 @@ class PracticalTypeEntityForm extends BundleEntityFormBase {
   /**
    * {@inheritdoc}
    */
-  protected function actions(array $form, FormStateInterface $form_state) {
+  protected function actions(array $form, FormStateInterface $form_state): array {
     $actions = parent::actions($form, $form_state);
 
     if (\Drupal::moduleHandler()->moduleExists('field_ui') && $this->getEntity()->isNew()) {
@@ -64,7 +64,7 @@ class PracticalTypeEntityForm extends BundleEntityFormBase {
   /**
    * {@inheritdoc}
    */
-  public function save(array $form, FormStateInterface $form_state) {
+  public function save(array $form, FormStateInterface $form_state): void {
     $entity_type = $this->entity;
     $status = $entity_type->save();
     $message_params = [
@@ -90,7 +90,7 @@ class PracticalTypeEntityForm extends BundleEntityFormBase {
    * @param array $form
    * @param FormStateInterface $form_state
    */
-  public function redirectToFieldUi(array $form, FormStateInterface $form_state) {
+  public function redirectToFieldUi(array $form, FormStateInterface $form_state): void {
     $route_info = FieldUI::getOverviewRouteInfo($this->entity->getEntityType()->getBundleOf(), $this->entity->id());
 
     if ($form_state->getTriggeringElement()['#parents'][0] === 'save_continue' && $route_info) {
