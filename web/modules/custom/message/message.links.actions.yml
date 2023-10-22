@@ -1,0 +1,11 @@
+message_entity_action_add:
+  route_name: entity.message.add_page
+  title: 'Add message entity'
+  appears_on:
+    - entity.message.collection
+
+message_type_entity_action_add:
+  route_name: entity.message_type.add_form
+  title: 'Add message entity type (bundle)'
+  appears_on:
+    - entity.message_type.collection
