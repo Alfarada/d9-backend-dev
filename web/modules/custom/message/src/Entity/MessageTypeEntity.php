@@ -24,7 +24,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   },
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\Core\Entity\EntityListBuilder",
+ *     "list_builder" = "Drupal\message\MessageTypeListBuilder",
  *     "form" = {
  *       "default" = "Drupal\message\Form\MessageTypeEntityForm",
  *       "add" = "Drupal\message\Form\MessageTypeEntityForm",
