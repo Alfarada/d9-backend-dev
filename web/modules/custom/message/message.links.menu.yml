@@ -1,0 +1,11 @@
+message_collection_menu:
+  title: 'Message entity list'
+  route_name: entity.message.collection
+  description: 'List of messages entities'
+  parent: system.admin_content
+
+type_message_collection_menu:
+  title: 'Message types'
+  route_name: entity.message_type.collection
+  description: 'List of messages entity types (bundles)'
+  parent: system.admin_structure
