@@ -41,7 +41,7 @@ use Drupal\Core\Entity\Annotation\ConfigEntityType;
  *     "canonical" = "/admin/structure/entities_section/{entities_section}",
  *     "add-form" = "/admin/structure/entities_section/add",
  *     "edit-form" = "/admin/structure/entities_section/{entities_section}/edit",
- *     "delete-form" = "/admin/structure/entities_section/{entities_section}/delete ",
+ *     "delete-form" = "/admin/structure/entities_section/{entities_section}/delete",
  *     "collection" = "/admin/structure/entities_section",
  *   }
  * )
