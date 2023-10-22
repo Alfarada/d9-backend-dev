@@ -8,7 +8,8 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\user\UserInterface;
 use Drupal\Core\Entity\{EntityChangedTrait,
   EntityStorageInterface,
-  EntityTypeInterface};
+  EntityTypeInterface
+};
 
 /**
  * Defines the Message entity.
@@ -56,7 +57,9 @@ use Drupal\Core\Entity\{EntityChangedTrait,
  * )
  */
 class MessageEntity extends ContentEntityBase {
+
   use EntityChangedTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -66,40 +69,51 @@ class MessageEntity extends ContentEntityBase {
       'user_id' => \Drupal::currentUser()->id(),
     ];
   }
+
   public function getType() {
     return $this->bundle();
   }
+
   public function getSubject() {
     return $this->get('subject')->value;
   }
+
   public function setSubject($subject) {
     $this->set('subject', $subject);
     return $this;
   }
+
   public function getCreatedTime() {
     return $this->get('created')->value;
   }
+
   public function setCreatedTime($timestamp) {
     $this->set('created', $timestamp);
     return $this;
   }
+
   public function getOwner() {
     return $this->get('user_id')->entity;
   }
+
   public function getOwnerId() {
     return $this->get('user_id')->target_id;
   }
+
   public function setOwnerId($uid) {
     $this->set('user_id', $uid);
     return $this;
   }
+
   public function setOwner(UserInterface $account) {
     $this->set('user_id', $account->id());
     return $this;
   }
+
   public function isPublished() {
     return (bool) $this->getEntityKey('status');
   }
+
   public function setPublished($published) {
     $this->set('status', $published ? TRUE : FALSE);
     return $this;
@@ -108,34 +122,40 @@ class MessageEntity extends ContentEntityBase {
   public function getUserToId() {
     return $this->get('user_to')->target_id;
   }
+
   public function setUserToId($uid) {
     $this->set('user_to', $uid);
     return $this;
   }
+
   public function getUserTo() {
     return $this->get('user_to')->entity;
   }
+
   public function setUserTo(UserInterface $account) {
     $this->set('user_to', $account->id());
     return $this;
   }
+
   public function getContent() {
     return $this->get('content')->value;
   }
+
   public function setContent($content) {
     $this->set('content', $content);
     return $this;
   }
+
   public function isRead() {
     return (bool) $this->getEntityKey('is_read');
   }
+
   public function setRead($read) {
     $this->set('is_read', $read ? TRUE : FALSE);
     return $this;
   }
 
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
-
     $fields = parent::baseFieldDefinitions($entity_type);
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
@@ -152,7 +172,8 @@ class MessageEntity extends ContentEntityBase {
       ->setDisplayOptions('form', [
         'type' => 'entity_reference_autocomplete',
         'weight' => 5,
-        'settings' => ['match_operator' => 'CONTAINS',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
           'size' => '60',
           'autocomplete_type' => 'tags',
           'placeholder' => '',
@@ -189,7 +210,7 @@ class MessageEntity extends ContentEntityBase {
     $fields['subject'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Subject'))
       ->setDescription(t('The subject of the Message entity.'))
-      ->setSettings( [
+      ->setSettings([
         'max_length' => 100,
         'text_processing' => 0,
       ])
@@ -216,7 +237,8 @@ class MessageEntity extends ContentEntityBase {
         'weight' => 0,
       ])
       ->setDisplayConfigurable('view', TRUE)
-      ->setDisplayOptions('form', ['type' => 'text_textfield',
+      ->setDisplayOptions('form', [
+        'type' => 'text_textfield',
         'weight' => 0,
       ])
       ->setDisplayConfigurable('form', TRUE);
@@ -241,4 +263,5 @@ class MessageEntity extends ContentEntityBase {
 
     return $fields;
   }
+
 }
