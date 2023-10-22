@@ -48,7 +48,7 @@ class MessageListBuilder extends EntityListBuilder {
     $row['to'] = $entity->getUserTo()->getAccounName();
     $row['subject'] = Link::createFromRoute(
       $entity->label(),
-      'entity.entities_message.edit_form',
+      'entity.message.edit_form',
       ['entities_message' => $entity->id()]
     );
     $row['created'] = $this->date_formatter->format($entity->getCreatedTime(), 'short');
