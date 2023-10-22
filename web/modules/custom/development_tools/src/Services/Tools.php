@@ -2,7 +2,8 @@
 
 namespace Drupal\development_tools\Services;
 
-class Tools {
+class
+Tools {
 
   /**
    * Convert a text from camelCase to Camel Case

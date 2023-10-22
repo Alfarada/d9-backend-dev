@@ -1,0 +1,3 @@
+administer message types:
+  title: 'Administer Message Entity types'
+  restrict access: true
