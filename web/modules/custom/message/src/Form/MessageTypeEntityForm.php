@@ -4,6 +4,7 @@ namespace Drupal\message\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\BundleEntityFormBase;
+use Drupal\field_ui\FieldUI;
 
 class MessageTypeEntityForm extends BundleEntityFormBase {
 
@@ -32,6 +33,35 @@ class MessageTypeEntityForm extends BundleEntityFormBase {
     ];
 
     return $this->protectBundleIdElement($form);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function actions(array $form, FormStateInterface $form_state): array {
+    $actions = parent::actions($form, $form_state);
+
+    if (\Drupal::moduleHandler()->moduleExists('field_ui') && $this->getEntity()->isNew()) {
+      $actions['save_continue'] = $actions['submit'];
+      $actions['save_continue']['#value'] = $this->t('Save and manage fields');
+      $actions['save_continue']['#submit'][] = [$this, 'redirectToFieldUi'];
+    }
+
+    return $actions;
+  }
+
+  /**
+   * Form submission handler to redirect to Manage fields page of Field UI.
+   *
+   * @param array $form
+   * @param FormStateInterface $form_state
+   */
+  public function redirectToFieldUi(array $form, FormStateInterface $form_state): void {
+    $route_info = FieldUI::getOverviewRouteInfo($this->entity->getEntityType()->getBundleOf(), $this->entity->id());
+
+    if ($form_state->getTriggeringElement()['#parents'][0] === 'save_continue' && $route_info) {
+      $form_state->setRedirectUrl($route_info);
+    }
   }
 
   /**
