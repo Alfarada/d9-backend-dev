@@ -2,8 +2,8 @@
 
 namespace Drupal\message;
 
-use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Datetime\DateFormatterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\{EntityInterface, EntityListBuilder, EntityStorageInterface, EntityTypeInterface};
 
@@ -19,7 +19,7 @@ class MessageListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
+  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type): self {
     return new static(
       $entity_type,
       $container->get('entity_type.manager')->getStorage($entity_type->id()),
@@ -29,7 +29,7 @@ class MessageListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildHeader(){
+  public function buildHeader(): array {
     $header['id'] = $this->t('Message ID');
     $header['from'] = $this->t('From');
     $header['to'] = $this->t('To');
@@ -42,14 +42,15 @@ class MessageListBuilder extends EntityListBuilder {
   /**
    * {@inheritdoc}
    */
-  public function buildRow(EntityInterface $entity) {
-    $row['id'] = $entity->toLink($entity->id());
-    $row['from'] = $entity->getOwner()->getAccounName();
-    $row['to'] = $entity->getUserTo()->getAccounName();
+  public function buildRow(EntityInterface $entity): array {
+     /** @var \Drupal\message\Entity\MessageEntityInterface $entity */
+    $row['id'] = $entity->id();
+    $row['from'] = $entity->getOwner()->getAccountName();
+    $row['to'] = $entity->getUserTo()->getAccountName();
     $row['subject'] = Link::createFromRoute(
       $entity->label(),
       'entity.message.edit_form',
-      ['entities_message' => $entity->id()]
+      ['message' => $entity->id()]
     );
     $row['created'] = $this->date_formatter->format($entity->getCreatedTime(), 'short');
     return $row + parent::buildRow($entity);
