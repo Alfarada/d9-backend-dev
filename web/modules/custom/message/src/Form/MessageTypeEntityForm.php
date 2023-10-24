@@ -2,9 +2,9 @@
 
 namespace Drupal\message\Form;
 
+use Drupal\field_ui\FieldUI;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\BundleEntityFormBase;
-use Drupal\field_ui\FieldUI;
 
 class MessageTypeEntityForm extends BundleEntityFormBase {
 
