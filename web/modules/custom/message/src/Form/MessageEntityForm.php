@@ -12,7 +12,7 @@ class MessageEntityForm extends ContentEntityForm {
     $message_params = [
       '%entity_label' => $entity->id(),
       '%content_entity_label' => $entity->getEntityType()->getLabel()->render(),
-      '%bundle_label' => $entity->bundle->entity->label(),
+      '%bundle_label' => $entity->bundle(),
     ];
 
     $status = parent::save($form, $form_state);

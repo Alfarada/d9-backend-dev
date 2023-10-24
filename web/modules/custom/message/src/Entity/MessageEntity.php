@@ -35,9 +35,9 @@ use Drupal\Core\Entity\{EntityChangedTrait,
  *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
  *     "views_data" = "Drupal\views\EntityViewsData",
  *     "form" = {
- *       "default" = "Drupal\Core\Entity\ContentEntityForm",
- *       "add" = "Drupal\Core\Entity\ContentEntityForm",
- *       "edit" = "Drupal\Core\Entity\ContentEntityForm",
+ *       "default" = "Drupal\message\Form\MessageEntityForm",
+ *       "add" = "Drupal\message\Form\MessageEntityForm",
+ *       "edit" = "Drupal\message\Form\MessageEntityForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
  *     },
  *     "route_provider" = {
