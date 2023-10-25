@@ -12,3 +12,14 @@ message.message_type.*:
       type: string
     description:
       type: string
+
+field.message_entities_color.value:
+  type: sequence
+  label: 'Default value'
+  sequence:
+    - type: mapping
+      label: 'Default'
+      mapping:
+        value:
+          type: string
+          label: 'Value'
