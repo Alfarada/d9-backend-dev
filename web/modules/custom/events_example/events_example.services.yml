@@ -1,0 +1,6 @@
+services:
+  events_example.event_config_subscriber:
+    class: Drupal\events_example\EventSubscriber\ExampleEventsConfigSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }
