@@ -4,3 +4,9 @@ services:
     arguments: ['@messenger']
     tags:
       - { name: event_subscriber }
+
+  events_example.event_users_subscriber:
+    class: Drupal\events_example\EventSubscriber\ExampleEventsUsersSubscriber
+    arguments: [ '@messenger' ]
+    tags:
+      - { name: event_subscriber }
