@@ -10,3 +10,8 @@ services:
     arguments: [ '@messenger' ]
     tags:
       - { name: event_subscriber }
+
+  events_example.route_subscriber:
+    class: Drupal\events_example\Routing\ExampleEventsRouteSubscriber
+    tags:
+      - { name: event_subscriber }
