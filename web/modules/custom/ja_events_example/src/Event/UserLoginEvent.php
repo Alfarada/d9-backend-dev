@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\events_example\Event;
+namespace Drupal\ja_events_example\Event;
 
 use Drupal\Component\EventDispatcher\Event;
 use Drupal\user\UserInterface;

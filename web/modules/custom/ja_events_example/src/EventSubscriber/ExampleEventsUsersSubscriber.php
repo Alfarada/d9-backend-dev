@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\events_example\EventSubscriber;
+namespace Drupal\ja_events_example\EventSubscriber;
 
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\events_example\Event\UserLoginEvent;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\events_example\EventSubscriber;
+namespace Drupal\ja_events_example\EventSubscriber;
 
 use Drupal\Core\Config\{ConfigEvents, ConfigCrudEvent};
 use Drupal\Core\Messenger\MessengerInterface;
