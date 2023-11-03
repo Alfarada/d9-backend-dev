@@ -1,0 +1,6 @@
+ja_email_example.message:
+  path: '/ja-example-email/message'
+  defaults:
+    _form: '\Drupal\ja_email_example\Form\EmailMessageForm'
+  requirements:
+    _role: 'authenticated'
