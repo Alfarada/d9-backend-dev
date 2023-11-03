@@ -1,0 +1,5 @@
+name: Email Example
+type: module
+description: demo of email sending
+package: Custom JA
+core_version_requirement: ^9 || ^10
