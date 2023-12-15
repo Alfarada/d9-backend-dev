@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.article.body
     - field.field.node.article.comment
+    - field.field.node.article.field_color
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
     - image.style.thumbnail
@@ -12,6 +13,7 @@ dependencies:
   module:
     - comment
     - image
+    - message
     - path
     - text
 _core:
@@ -40,6 +42,12 @@ content:
   created:
     type: datetime_timestamp
     weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_color:
+    type: message_entities_text
+    weight: 121
     region: content
     settings: {  }
     third_party_settings: {  }

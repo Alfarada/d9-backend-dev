@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - plugin_example
+    - system
   theme:
     - olivero
 id: nodevoting
@@ -17,4 +18,8 @@ settings:
   label: 'Node Voting test'
   label_display: visible
   provider: plugin_example
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

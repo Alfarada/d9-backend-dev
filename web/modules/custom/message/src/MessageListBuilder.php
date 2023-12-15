@@ -52,6 +52,7 @@ class MessageListBuilder extends EntityListBuilder {
       'entity.message.edit_form',
       ['message' => $entity->id()]
     );
+
     $row['created'] = $this->date_formatter->format($entity->getCreatedTime(), 'short');
     return $row + parent::buildRow($entity);
 

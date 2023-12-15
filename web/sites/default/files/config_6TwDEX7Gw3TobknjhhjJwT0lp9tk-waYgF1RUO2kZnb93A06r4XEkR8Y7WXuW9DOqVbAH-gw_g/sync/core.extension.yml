@@ -17,6 +17,7 @@ module:
   contact: 0
   contextual: 0
   controller_routes_practices: 0
+  cron_example: 0
   crud_employees: 0
   crud_user_entity: 0
   datetime: 0
@@ -24,8 +25,10 @@ module:
   devel: 0
   devel_generate: 0
   devel_php: 0
+  development_tools: 0
   dynamic_page_cache: 0
   editor: 0
+  entities_section: 0
   examples: 0
   field: 0
   field_ui: 0
@@ -35,6 +38,8 @@ module:
   help: 0
   history: 0
   image: 0
+  ja_cache: 0
+  ja_email_example: 0
   ja_plugins: 0
   ja_template: 0
   layout_builder: 0
@@ -49,12 +54,13 @@ module:
   page_cache: 0
   path: 0
   path_alias: 0
-  phpunit_example: 0
+  plugin_block: 0
   plugin_example: 0
-  plugin_type_example: 0
+  practical: 0
   reports: 0
   search: 0
   shortcut: 0
+  smtp: 0
   system: 0
   taxonomy: 0
   text: 0

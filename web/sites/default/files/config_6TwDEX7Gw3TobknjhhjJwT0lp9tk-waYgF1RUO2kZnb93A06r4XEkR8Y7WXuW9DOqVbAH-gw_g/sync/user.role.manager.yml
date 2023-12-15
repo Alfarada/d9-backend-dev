@@ -16,7 +16,6 @@ dependencies:
     - path
     - system
     - taxonomy
-    - toolbar
     - tour
 id: manager
 label: Manager
@@ -29,7 +28,6 @@ permissions:
   - 'access create user entity'
   - 'access files overview'
   - 'access tab2 page'
-  - 'access toolbar'
   - 'access tour'
   - 'access user entity list'
   - 'access view user entity'
