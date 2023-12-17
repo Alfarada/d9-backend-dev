@@ -1,0 +1,6 @@
+name: Ja cache
+type: module
+description: testing the cache API
+package: Custom
+core: 8.x
+core_version_requirement: ^8 || ^9

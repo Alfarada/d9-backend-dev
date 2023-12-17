@@ -1,0 +1,7 @@
+ja_cache.default:
+  path: '/admin/ja-cache/cache/default'
+  defaults:
+    _title: 'Cache default'
+    _controller: '\Drupal\ja_cache\Controller\JaCacheDefaultController::build'
+  requirements:
+    _permission: 'access content'
