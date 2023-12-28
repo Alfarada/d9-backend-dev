@@ -1,0 +1,21 @@
+<?php
+
+/**
+* Implements hook_ENTITY_TYPE_insert for 'node' entity.
+*/
+
+function ja_queues_node_insert(\Drupal\Core\Entity\EntityInterface $entity): void {
+
+  $data['id'] = $entity->id();
+  $data['title'] = $entity->getTitle();
+
+  $queue = \Drupal::service('queue')->get('node_reverse_titles');
+  $queue->createItem($data);
+
+  $count = $queue->numberOfItems();
+
+  \Drupal::messenger()->addMessage(t('Node @nid added to the queue. Items in the queue: @count',
+    ['@nid' => $entity->id(), '@count' => $count ])
+  );
+}
+
