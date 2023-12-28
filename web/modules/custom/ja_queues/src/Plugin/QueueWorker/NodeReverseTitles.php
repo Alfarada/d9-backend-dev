@@ -2,6 +2,7 @@
 
 namespace Drupal\ja_queues\Plugin\QueueWorker;
 
+use Drupal\Core\Annotation\QueueWorker;
 use Drupal\Core\Queue\QueueWorkerBase;
 
 /**
