@@ -1,0 +1,7 @@
+name: 'Olivero theme custom'
+type: theme
+base theme: olivero
+description: 'Subtema a partir de olivero'
+core_version_requirement: ^9
+libraries:
+  - ja_olivero/global-styling

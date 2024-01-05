@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implementacion de un tema a partir de un tema base (olivero)
+ *
+ * Este modulo nos permite modificar plantillas de el nucleo del sistema de tal manera que no modificamos el tema original
+ * ( tema base ) si no, que drupal automaticamente sobre escribe la estructura de la plantilla original.
+ */

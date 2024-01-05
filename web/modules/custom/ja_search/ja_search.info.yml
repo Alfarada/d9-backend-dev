@@ -1,5 +1,0 @@
-name: JA Search
-description: Demonstration of how the API Search works
-package: Custom
-type: module
-core_version_requirement: ^9
