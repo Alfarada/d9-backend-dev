@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Este modulo esta relacionado con el tema custom themes/custom/ja_olivero para modificar
+ * la estructura HTML del listado de nodos en la pagina de busqyeda.
+ */
+
+use Drupal\node\NodeInterface;
+/**
+ * Implements hook_node_update_index().
+ *
+ * acts when the node is being indexed by the engine
+ * searches, allowing information to be added to be indexed
+ */
+function ja_search_node_update_index(NodeInterface $node): ?string {
+  if ($node->isPromoted()) {
+    return 'promocionado';
+  }
+  return NULL;
+}
+
+/**
+ * Implements hook_node_search_result().
+ *
+ * acts when the node is being displayed as a result of a search.
+ */
+function ja_search_node_search_result(NodeInterface $node) {
+  if($node->isPromoted()) {
+    return ['promoted_content' => t('Promoted content')];
+  }
+}
