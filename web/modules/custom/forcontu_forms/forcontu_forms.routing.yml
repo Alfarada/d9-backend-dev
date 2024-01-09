@@ -13,3 +13,11 @@ forcontu_forms.settings:
     _title: 'Forcontu Forms'
   requirements:
     _permission: 'forcontu form access'
+
+forcontu_forms.states:
+  path: '/forcontu/forms/states'
+  defaults:
+    _form: '\Drupal\forcontu_forms\Form\States'
+    _title: 'States Form'
+  requirements:
+    _permission: 'access content'
