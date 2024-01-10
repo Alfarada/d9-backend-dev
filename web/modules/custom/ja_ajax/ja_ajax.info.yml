@@ -1,0 +1,5 @@
+name: ja_ajax
+type: module
+description: several AJAX examples
+package: Custom
+core_version_requirement: ^9 || ^10

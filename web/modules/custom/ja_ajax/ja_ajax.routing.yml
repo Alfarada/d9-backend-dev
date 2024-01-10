@@ -1,0 +1,15 @@
+ja_ajax.link:
+  path: '/ja-ajax/ajax/link'
+  defaults:
+    _title: 'Ajax link example'
+    _controller: '\Drupal\ja_ajax\Controller\AjaxController::link'
+  requirements:
+    _permission: 'access content'
+
+ja_ajax.link_callback:
+  path: '/ja-ajax/ajax/link-callback'
+  defaults:
+    _title: 'Ajax link example callback'
+    _controller: '\Drupal\ja_ajax\Controller\AjaxController::linkCallback'
+  requirements:
+    _permission: 'access content'
