@@ -13,3 +13,11 @@ ja_ajax.link_callback:
     _controller: '\Drupal\ja_ajax\Controller\AjaxController::linkCallback'
   requirements:
     _permission: 'access content'
+
+ja_ajax.form:
+  path: '/ja-ajax/ajax/form'
+  defaults:
+    _title: 'Ajax Form example'
+    _form: '\Drupal\ja_ajax\Form\AjaxForm'
+  requirements:
+    _permission: 'access content'
