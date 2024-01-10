@@ -21,3 +21,19 @@ ja_ajax.form:
     _form: '\Drupal\ja_ajax\Form\AjaxForm'
   requirements:
     _permission: 'access content'
+
+ja_ajax.form_autocomplete:
+  path: '/ja-ajax/ajax/form/autocomplete'
+  defaults:
+    _form: '\Drupal\ja_ajax\Form\AutocompleteForm'
+    _title: 'Autocomplete Form Example'
+  requirements:
+    _permission: 'access content'
+
+ja_ajax.user_autocomplete:
+  path: '/ja-ajax/ajax/user_autocomplete'
+  defaults:
+    _controller: '\Drupal\ja_ajax\Controller\AjaxAutocompleteController::userAutocomplete'
+    _title: 'User autocomplete'
+  requirements:
+    _permission: 'access content'
