@@ -1,0 +1,35 @@
+<?php
+
+function example_views_views_data() {
+  $data = [];
+  $data['forcontu_node_highlighted'] = [];
+  $data['forcontu_node_highlighted']['table'] = [];
+  $data['forcontu_node_highlighted']['table']['group'] = t('Example views');
+  $data['forcontu_node_highlighted']['table']['provider'] = 'example_views';
+
+  $data['forcontu_node_highlighted']['table']['join']  = [
+    'node_field_data' => [
+      'left_field' => 'nid',
+      'field' => 'nid',
+    ],
+  ];
+
+  $data['forcontu_node_highlighted']['highlighted'] = [
+    'title' => t('Highlighted content'),
+    'help' => t('Boolean field for highlighted content.'),
+    'field' => [
+      'id' => 'boolean',
+    ],
+    'sort' => [
+      'id' => 'standard',
+    ],
+    'filter' => [
+      'id' => 'boolean',
+      'label' => t('Highlighted'),
+      'type' => 'yes-no',
+      'use_equal' => TRUE,
+    ]
+  ];
+
+  return $data;
+}

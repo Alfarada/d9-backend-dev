@@ -1,0 +1,7 @@
+name: 'Example views'
+type: module
+description: 'Example views'
+core_version_requirement: '^9'
+package: 'Examples'
+dependencies:
+  - forcontu_forms
