@@ -4,10 +4,12 @@ function example_views_views_data() {
   $data = [];
   $data['forcontu_node_highlighted'] = [];
   $data['forcontu_node_highlighted']['table'] = [];
+  // represents the name of the category when you add a new field to the view
   $data['forcontu_node_highlighted']['table']['group'] = t('Example views');
+  // name of the machine that implements this hook and that is also responsible for the external table
   $data['forcontu_node_highlighted']['table']['provider'] = 'example_views';
-
   $data['forcontu_node_highlighted']['table']['join']  = [
+
     'node_field_data' => [
       'left_field' => 'nid',
       'field' => 'nid',
@@ -18,7 +20,7 @@ function example_views_views_data() {
     'title' => t('Highlighted content'),
     'help' => t('Boolean field for highlighted content.'),
     'field' => [
-      'id' => 'boolean',
+      'id' => 'boolean_icon',
     ],
     'sort' => [
       'id' => 'standard',
