@@ -35,3 +35,17 @@ function example_views_views_data() {
 
   return $data;
 }
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function example_views_views_data_alter(array &$data) {
+  if (isset($data['node_field_data'])) {
+    $data['node_field_data']['published_by_on'] = [
+      'title' => t('Published by'),
+      'field' => [
+        'id' => 'published_by_on',
+      ],
+    ];
+  }
+}
