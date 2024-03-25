@@ -23,7 +23,7 @@ function example_views_views_data() {
       'id' => 'boolean_icon',
     ],
     'sort' => [
-      'id' => 'standard',
+    'id' => 'highlighted_order',
     ],
     'filter' => [
       'id' => 'boolean',
