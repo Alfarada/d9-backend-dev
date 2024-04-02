@@ -33,6 +33,15 @@ function example_views_views_data() {
     ]
   ];
 
+  $data['forcontu_node_highlighted']['highlighted_recent'] = [
+    'title' => t('Highlighted recent content'),
+    'help' => t('Highlighted recent content.'),
+    'filter' => [
+      'id' => 'highlighted_recent',
+      'label' => t('Highlighted recent'),
+    ],
+  ];
+
   return $data;
 }
 
